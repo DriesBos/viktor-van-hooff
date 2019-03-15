@@ -2,20 +2,134 @@
 @import '~/assets/styling/typography.sass'
 @import '~/assets/styling/transitions.sass'
 
-.view-Container
-  margin-top: $spacing-2
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
+.desktop
+  @media all and (max-width: $breakpoint)
+    display: none
 
-.post-List
-  display: flex
-  flex-direction: column
-  width: 300px
+.productsItem, .profilesItem
+  float: right
+  ul
+    max-width: 400px
+    @media all and (max-width: $breakpoint)
+      max-width: 100%
   li
-    background: lightblue
-    margin-bottom: $spacing-2
+    margin-bottom: $spacing-4
+    display: inline-block // Assures the FLIP animation script (fade-in-ou for li elements)
+    img
+      transition: opacity .2s ease
+  li:last-child
+    margin-bottom: $spacing
+  .product-TitleDate
+    display: flex
+    flex-wrap: nowrap
+    justify-content: space-between
+    margin-bottom: $spacing
+    > div:first-child
+      flex-grow: 1
+    > div:last-child
+      margin-left: $spacing
+      flex-shrink: 0
   img
     width: 100%
-    background: green
+    height: auto
+    margin-bottom: $spacing
+  h2, p
+    display: inline
+
+.productsItem
+  li
+    cursor: pointer
+  li:hover
+    img
+      opacity: .75
+
+.productItem
+  ul
+    width: 100%
+  li
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    margin-bottom: $spacing
+    .product-TitleDate
+      display: flex
+      flex-wrap: nowrap
+      justify-content: space-between
+      margin-bottom: $spacing
+      max-width: 400px
+      width: 100%
+      > div:first-child
+        flex-grow: 1
+      > div:last-child
+        margin-left: $spacing
+        flex-shrink: 0
+      @media all and (max-width: $breakpoint)
+        width: 100%
+        max-width: 100%
+    .productItem-Text
+      margin-bottom: $spacing
+  li:last-child
+    margin-bottom: 0
+  .product-Image
+    max-width: 400px
+    max-height: calc(100vmin - (2 * #{$spacing}))
+    margin-bottom: $spacing
+    transition: max-width .22s ease-out
+    will-change: max-width
+    transform: translateZ(0)
+    @media all and (max-width: $breakpoint)
+      width: 100%
+      max-width: 100%
+      max-height: 100%
+    &:last-child
+      margin-bottom: 0
+    img
+      width: auto
+      height: auto
+      max-width: 100%
+      max-height: calc(100vmin - (2 * #{$spacing}))
+      cursor: pointer
+      transition: opacity .2s ease
+      &:hover
+        opacity: .75
+      @media all and (max-width: $breakpoint)
+        width: 100%
+        max-height: 100%
+  .product-Image.active
+    max-width: 100%
+    img
+      cursor: zoom-out
+  .product-Footer
+    display: flex
+    justify-content: space-between
+    width: 100%
+    max-width: 400px
+    @media all and (max-width: $breakpoint)
+      width: 100%
+      max-width: 100%
+    img
+      width: 24px
+      height: 13px
+      display: inline
+    &_Next
+      margin-left: auto
+    &_Prev, &_Next
+      p
+        margin-left: 6px
+        margin-right: 6px
+      cursor: pointer
+      &:hover p
+        text-decoration: underline
+    &_Next img
+      transform: rotate(180deg)
+  h2, p
+    display: inline
+    max-width: 400px
+    @media all and (max-width: $breakpoint)
+      width: 100%
+      max-width: 100%
+
+// TIJDELIJK
+#show-modal
+  padding-top: 200px
+  z-index: 100

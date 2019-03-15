@@ -1,0 +1,70 @@
+<template>
+  <transition name="modal">
+    <div class="modal-Container">
+      <div class="modal-CloseBackground" @click="$emit('close')">
+        <div class="modal-Close" @click="$emit('close')">
+          <img src="@/assets/images/close.png">
+        </div>
+
+        <div class="modal-Content" @click.stop>
+          <slot></slot>
+        </div>
+      </div>
+    </div>
+  </transition>
+</template>
+
+<script>
+export default {
+  methods: {
+    close: function() {
+      this.$emit('close')
+    }
+  },
+  mounted: function() {
+    document.addEventListener('keydown', e => {
+      if (this.show && e.keyCode == 27) {
+        this.close()
+      }
+    })
+  }
+}
+</script>
+
+<style lang="sass">
+@import '~/assets/styling/variables.sass'
+
+.modal
+  &-Container
+    position: fixed
+    z-index: 990
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: hsla(0, 50%, 100%, 1)
+  &-CloseBackground
+    position: absolute
+    width: 100%
+    height: 100%
+    padding: $spacing
+    // cursor: url(~/assets/images/close-icon.svg), zoom-out
+  &-Close
+    position: fixed
+    z-index: 999
+    top: 0
+    left: 0
+    padding: $spacing
+    cursor: pointer
+    img
+      width: 18px
+      height: 18px
+  &-Content
+    height: 100%
+    width: 100%
+
+.modal-enter-active, .modal-leave-active
+  transition: opacity .2s ease
+.modal-enter, .modal-leave-to
+  opacity: 0
+</style>

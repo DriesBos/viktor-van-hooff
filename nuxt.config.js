@@ -8,7 +8,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'nuxt-storyblok-boilerplate',
+    title: 'Viktor van Hooff — Architect',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -24,7 +24,11 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: {
+    color: '#fff',
+    height: '2px',
+    throttle: '200'
+  },
 
   /*
   ** Global CSS

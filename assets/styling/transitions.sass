@@ -1,0 +1,29 @@
+@import '~/assets/styling/variables.sass'
+
+// Page Fade
+.page-enter-active, .page-leave-active
+  transition: opacity .2s ease
+.page-enter, .page-leave-to
+  opacity: 0
+
+// Product Fade
+.productlist-enter-active, .productlist-leave-active
+  transition: opacity .2s ease
+.productlist-enter-active
+  transition-delay: .2s // out-in mode workaround
+.productlist-enter, .productlist-leave-to
+  opacity: 0
+
+// Header Fade
+.headeritem-enter, .headeritem-leave-to
+  opacity: 0
+.headeritem-enter-active
+  transition: opacity .2s .2s ease // Enter with delay to account for page transition delay (due to mode = out-in)
+.headeritem-leave-active
+  transition: opacity .2s ease
+
+// Modal Fade
+  // See Modal component
+
+// Slide Fade
+  // See Slide component
