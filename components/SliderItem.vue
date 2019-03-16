@@ -18,8 +18,7 @@
 export default {
   name: 'SliderItem',
   props: {
-    images: {},
-    apiUrl: ''
+    images: {}
   },
   data() {
     return {
@@ -78,11 +77,6 @@ export default {
   right: 0
   img
     transform: rotate(180deg)
-
-// .image-Slider_Close
-//   left: 50%
-//   transform: translateX(-50%)
-//   cursor: zoom-out
 
 .slider-enter-active, .slider-leave-active
   transition: all .2s ease

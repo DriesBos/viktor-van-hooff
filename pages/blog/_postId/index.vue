@@ -1,17 +1,67 @@
-<template>
-  <section class="view-Container view-Post">
-    <ul class="post-List">
+  <template>
+  <div>
+    <div class="productItem">
       <li>
-        <h1>{{ title }}</h1>
-        <p>{{ content }}</p>
-        <img :src="thumbnail">
+        <div class="product-Image" @click="showModal = true">
+          <img :src="thumbnail">
+        </div>
+        <div class="product-TitleDate">
+          <div>
+            <h1>{{ title }}</h1>
+          </div>
+          <div>
+            <p>category</p>
+          </div>
+        </div>
+        <p class="productItem-Text">{{ content }}</p>
+        <!-- <div
+          v-for="( image,index ) in project.images"
+          class="product-Image"
+          @click="showModal = true"
+          :key="index"
+        >
+          <img :src="`${apiUrl}/${image.url}`">
+        </div>
+        <div class="product-Footer">
+          <div
+            v-if="previousProjectId()"
+            @click="navigateToProject(previousProjectId())"
+            class="product-Footer_Prev"
+          >
+            <img class="arrow" src="@/assets/images/arrow.png">
+            <p>Previous Project</p>
+          </div>
+          <div
+            v-if="nextProjectId()"
+            @click="navigateToProject(nextProjectId())"
+            class="product-Footer_Next"
+          >
+            <p>Next</p>
+            <img class="arrow" src="@/assets/images/arrow.png">
+          </div>
+        </div>-->
       </li>
-    </ul>
-  </section>
+      <modalItem v-if="showModal" @close="showModal = false">
+        <sliderItem @close="showModal = false" :images="[thumbnail, thumbnail]"></sliderItem>
+      </modalItem>
+    </div>
+  </div>
 </template>
 
 <script>
+import SliderItem from '~/components/SliderItem.vue'
+import ModalItem from '~/components/ModalItem.vue'
+
 export default {
+  components: {
+    SliderItem,
+    ModalItem
+  },
+  data() {
+    return {
+      showModal: false
+    }
+  },
   asyncData(context) {
     return context.app.$storyapi
       .get('cdn/stories/blog/' + context.params.postId, {

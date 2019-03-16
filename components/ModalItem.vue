@@ -23,7 +23,7 @@ export default {
   },
   mounted: function() {
     document.addEventListener('keydown', e => {
-      if (this.show && e.keyCode == 27) {
+      if (this.show && e.keyCode === 27) {
         this.close()
       }
     })
@@ -48,7 +48,6 @@ export default {
     width: 100%
     height: 100%
     padding: $spacing
-    // cursor: url(~/assets/images/close-icon.svg), zoom-out
   &-Close
     position: fixed
     z-index: 999
