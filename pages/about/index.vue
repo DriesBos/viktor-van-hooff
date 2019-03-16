@@ -2,7 +2,7 @@
   <div class="profilesItem">
     <ul>
       <li>
-        <!-- <img :src="profile.cover.url"> -->
+        <img :src="cover">
         <div class="product-TitleDate">
           <div>
             <h1>{{ title }}</h1>
@@ -27,7 +27,8 @@ export default {
       .then(res => {
         return {
           title: res.data.story.content.title,
-          content: res.data.story.content.content
+          content: res.data.story.content.content,
+          cover: res.data.story.content.cover
         }
       })
   }
