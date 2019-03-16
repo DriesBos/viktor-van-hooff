@@ -1,43 +1,34 @@
 <template>
-  <section class="view-Container">
-    <ul class="post-List">
-      <PostPreview
-        v-for="post in posts"
-        :id="post.id"
-        :key="post.id"
-        :title="post.title"
-        :excerpt="post.excerpt"
-        :thumbnail="post.thumbnail"
-      />
-    </ul>
-  </section>
+  <router-link class="home" tag="div" to="/blog">
+    <div class="landing">
+      <ul class="logo">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="imageContainer">
+      <img :src="cover">
+    </div>
+  </router-link>
 </template>
 
 <script>
-import PostPreview from '~/components/PostPreview.vue'
-
 export default {
-  components: {
-    PostPreview: PostPreview
-  },
   asyncData(context) {
     return context.app.$storyapi
-      .get('cdn/stories', {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-        starts_with: 'blog/'
+      .get('cdn/stories/landing', {
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'
       })
       .then(res => {
-        console.log(res)
         return {
-          posts: res.data.stories.map(bp => {
-            return {
-              id: bp.slug,
-              title: bp.content.title,
-              excerpt: bp.content.excerpt,
-              content: bp.content.content,
-              thumbnail: bp.content.thumbnail
-            }
-          })
+          cover: res.data.story.content.cover
         }
       })
   }
