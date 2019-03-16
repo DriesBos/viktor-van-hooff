@@ -2,7 +2,7 @@
   <div class="profilesItem">
     <ul>
       <li>
-        <img :src="cover">
+        <img :src="thumbnail">
         <div class="product-TitleDate">
           <div>
             <h1>{{ title }}</h1>
@@ -28,7 +28,7 @@ export default {
         return {
           title: res.data.story.content.title,
           content: res.data.story.content.content,
-          cover: res.data.story.content.cover
+          thumbnail: res.data.story.content.thumbnail
         }
       })
   }
