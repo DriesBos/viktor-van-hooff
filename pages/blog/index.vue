@@ -1,6 +1,6 @@
 <template>
-  <section class="view-Container">
-    <ul class="post-List">
+  <section class="productsItem">
+    <transition-group class="productlist" tag="ul">
       <PostPreview
         v-for="post in posts"
         :id="post.id"
@@ -9,7 +9,7 @@
         :excerpt="post.excerpt"
         :thumbnail="post.thumbnail"
       />
-    </ul>
+    </transition-group>
   </section>
 </template>
 
@@ -34,7 +34,6 @@ export default {
               id: bp.slug,
               title: bp.content.title,
               excerpt: bp.content.excerpt,
-              content: bp.content.content,
               thumbnail: bp.content.thumbnail
             }
           })

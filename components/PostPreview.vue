@@ -1,14 +1,25 @@
 <template>
   <nuxt-link :to="'/blog/' + id" tag="li">
-    <h1>{{ title }}</h1>
-    <p>{{ excerpt }}</p>
     <img :src="thumbnail">
+    <div class="product-TitleDate">
+      <div>
+        <h1>{{ title }}</h1>
+      </div>
+      <div>
+        <p>category</p>
+      </div>
+    </div>
+    <p>{{ excerpt }}</p>
   </nuxt-link>
 </template>
 
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     title: {
       type: String,
       required: true
@@ -18,10 +29,6 @@ export default {
       required: true
     },
     thumbnail: {
-      type: String,
-      required: true
-    },
-    id: {
       type: String,
       required: true
     }
