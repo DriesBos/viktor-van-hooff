@@ -1,6 +1,6 @@
 <template>
-  <section class="productsItem">
-    <transition-group class="productlist" tag="ul">
+  <div class="view-Blog post-List">
+    <transition-group tag="ul">
       <PostPreview
         v-for="post in posts"
         :id="post.id"
@@ -10,7 +10,7 @@
         :thumbnail="post.thumbnail"
       />
     </transition-group>
-  </section>
+  </div>
 </template>
 
 <script>

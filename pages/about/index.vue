@@ -1,5 +1,5 @@
 <template>
-  <div class="profilesItem">
+  <div class="view-About post-List">
     <ul>
       <li>
         <img :src="thumbnail">
