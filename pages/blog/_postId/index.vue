@@ -14,15 +14,21 @@
           </div>
         </div>
         <p class="productItem-Text">{{ content }}</p>
-        <!-- <div
-          v-for="( image,index ) in project.images"
-          class="product-Image"
-          @click="showModal = true"
-          :key="index"
-        >
-          <img :src="`${apiUrl}/${image.url}`">
+
+        <div class="product-Image" @click="showModal = true">
+          <img :src="image_0">
+          <img :src="image_1">
+          <img :src="image_2">
+          <img :src="image_3">
+          <img :src="image_4">
+          <img :src="image_5">
+          <img :src="image_6">
+          <img :src="image_7">
+          <img :src="image_8">
+          <img :src="image_9">
         </div>
-        <div class="product-Footer">
+
+        <!-- <div class="product-Footer">
           <div
             v-if="previousProjectId()"
             @click="navigateToProject(previousProjectId())"
@@ -42,7 +48,10 @@
         </div>-->
       </li>
       <modalItem v-if="showModal" @close="showModal = false">
-        <sliderItem @close="showModal = false" :images="[thumbnail, thumbnail]"></sliderItem>
+        <sliderItem
+          @close="showModal = false"
+          :images="[thumbnail, image_0, image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8, image_9]"
+        ></sliderItem>
       </modalItem>
     </div>
   </div>
@@ -71,7 +80,17 @@ export default {
         return {
           title: res.data.story.content.title,
           content: res.data.story.content.content,
-          thumbnail: res.data.story.content.thumbnail
+          thumbnail: res.data.story.content.thumbnail,
+          image_0: res.data.story.content.image_0,
+          image_1: res.data.story.content.image_1,
+          image_2: res.data.story.content.image_2,
+          image_3: res.data.story.content.image_3,
+          image_4: res.data.story.content.image_4,
+          image_5: res.data.story.content.image_5,
+          image_6: res.data.story.content.image_6,
+          image_7: res.data.story.content.image_7,
+          image_8: res.data.story.content.image_8,
+          image_9: res.data.story.content.image_9
         }
       })
   }
