@@ -1,15 +1,17 @@
 <template>
-  <nuxt-link :to="'/blog/' + id" tag="li">
-    <img :src="thumbnail">
-    <div class="product-TitleDate">
-      <div>
+  <nuxt-link :to="'/blog/' + id" tag="li" class="post-Item">
+    <div v-if="thumbnail" class="post-Thumbnail">
+      <img :src="thumbnail">
+    </div>
+    <div class="post-Info">
+      <div v-if="title">
         <h1>{{ title }}</h1>
       </div>
-      <div>
-        <p></p>
+      <div v-if="location">
+        <p>&nbsp;— {{ location }}</p>
       </div>
     </div>
-    <MarkdownItem :input="excerpt"/>
+    <MarkdownItem v-if="excerpt" :input="excerpt" class="post-Content"/>
   </nuxt-link>
 </template>
 
@@ -23,19 +25,23 @@ export default {
   props: {
     id: {
       type: String,
-      required: true
+      required: false
     },
     title: {
       type: String,
-      required: true
+      required: false
+    },
+    location: {
+      type: String,
+      required: false
     },
     excerpt: {
       type: String,
-      required: true
+      required: false
     },
     thumbnail: {
       type: String,
-      required: true
+      required: false
     }
   }
 }

@@ -1,11 +1,12 @@
 <template>
-  <div class="view-Blog post-List">
-    <transition-group tag="ul">
+  <div class="view-General view-Blog">
+    <transition-group class="post-List" tag="ul">
       <PostPreview
         v-for="post in posts"
         :id="post.id"
         :key="post.id"
         :title="post.title"
+        :location="post.location"
         :excerpt="post.excerpt"
         :thumbnail="post.thumbnail"
       />
@@ -27,12 +28,12 @@ export default {
         starts_with: 'blog/'
       })
       .then(res => {
-        console.log(res)
         return {
           posts: res.data.stories.map(bp => {
             return {
               id: bp.slug,
               title: bp.content.title,
+              location: bp.content.location,
               excerpt: bp.content.excerpt,
               thumbnail: bp.content.thumbnail
             }

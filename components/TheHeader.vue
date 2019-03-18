@@ -105,7 +105,7 @@
   top: 0
   left: 0
   display: inline-flex
-  padding: $spacing
+  padding: $spacing-3
   @media all and (max-width: $breakpoint)
     position: relative
     width: 100%
@@ -116,7 +116,7 @@
     position: relative
     display: inline-block
     width: 230px
-    margin-left: $spacing
+    margin-left: $spacing-3
     @media all and (max-width: $breakpoint)
       width: auto
       max-width: 330px
@@ -134,7 +134,7 @@
       line-height: 1.4
   .menu-arrow
     padding-top: 28px
-    padding-right: $spacing
+    padding-right: $spacing-3
     padding-bottom: 28px
     cursor: pointer
     &:hover > p
@@ -151,8 +151,8 @@
   display: inline-flex
   flex-wrap: wrap
   width: calc((24px * 3) + (2px * 2))
-  margin-left: $spacing
-  margin-right: $spacing
+  margin-left: $spacing-3
+  margin-right: $spacing-3
   align-content: flex-start
   transition: opacity .2s ease
   cursor: pointer

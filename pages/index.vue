@@ -40,7 +40,7 @@ export default {
 
 .home
   width: 100%
-  height: calc(100vh - (2 * #{$spacing}))
+  height: calc(100vh - (2 * #{$spacing-3}))
   cursor: pointer
   img
     width: 100%
@@ -56,7 +56,7 @@ export default {
     left: 50%
     transform: translate(-50%, -50%)
     display: inline-flex
-    padding: $spacing
+    padding: $spacing-3
     .logo
       width: calc((6vmin * 3) + (.5vmin * 2))
       transition: opacity .2s ease

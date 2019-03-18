@@ -19,5 +19,5 @@ export default {
 @import '~/assets/styling/main.sass'
 
 #__layout
-  padding: $spacing
+  padding: $spacing-3
 </style>

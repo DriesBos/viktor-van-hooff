@@ -67,7 +67,7 @@ export default {
   top: 50%
   transform: translateY(-50%)
   cursor: pointer
-  padding: $spacing
+  padding: $spacing-3
   img
     width: 24px
     height: 18px
