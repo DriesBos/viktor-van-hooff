@@ -6,7 +6,7 @@
         <h1>{{ title }}</h1>
       </div>
       <div>
-        <p>category</p>
+        <p></p>
       </div>
     </div>
     <p>{{ excerpt }}</p>
