@@ -1,24 +1,31 @@
 <template>
-  <div class="view-About post-List">
-    <ul>
-      <li>
-        <img :src="thumbnail">
-        <div class="product-TitleDate">
-          <div>
+  <div class="view-General view-About">
+    <ul class="post-List">
+      <li class="post-Item">
+        <div v-if="thumbnail" class="post-Thumbnail" @click="showModal = true">
+          <img :src="thumbnail">
+        </div>
+        <div class="post-Info">
+          <div v-if="title">
             <h1>{{ title }}</h1>
           </div>
-          <div>
-            <!-- <p v-if="profile.categories">{{ profile.categories.title }}</p> -->
+          <div v-if="location">
+            <p>&nbsp;— {{ location }}</p>
           </div>
         </div>
-        <p>{{ content }}</p>
+        <MarkdownItem v-if="content" :input="content" class="post-Content"/>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import MarkdownItem from '~/components/MarkdownItem.vue'
+
 export default {
+  components: {
+    MarkdownItem
+  },
   asyncData(context) {
     return context.app.$storyapi
       .get('cdn/stories/about', {
