@@ -6,100 +6,37 @@
   @media all and (max-width: $breakpoint)
     display: none
 
-.post-List
+.view-General
+  max-width: 400px
   float: right
-  ul
-    max-width: 400px
-    @media all and (max-width: $breakpoint)
-      max-width: 100%
+  @media all and (max-width: $breakpoint)
+    max-width: 100%
+
+.post-List
   li
     margin-bottom: $spacing-4
     display: inline-block // Assures the FLIP animation script (fade-in-ou for li elements)
-    img
-      transition: opacity .2s ease
   li:last-child
-    margin-bottom: $spacing
-  .product-TitleDate
-    display: flex
-    flex-wrap: nowrap
-    justify-content: space-between
-    margin-bottom: $spacing
-    > div:first-child
-      flex-grow: 1
-    > div:last-child
-      margin-left: $spacing
-      flex-shrink: 0
+    margin-bottom: $spacing-3
+
+.post-Item
+  > div
+    margin-bottom: $spacing-3
+  > div:last-child
+    margin-bottom: 0
   img
     width: 100%
     height: auto
-    margin-bottom: $spacing
-  h2, p
-    display: inline
-
-.view-Blog
-  li
-    cursor: pointer
-  li:hover
-    img
-      opacity: .75
-
-.view-Post
-  ul
-    width: 100%
-  li
-    display: flex
-    flex-direction: column
-    align-items: flex-end
-    margin-bottom: $spacing
-    .product-TitleDate
-      display: flex
-      flex-wrap: nowrap
-      justify-content: space-between
-      margin-bottom: $spacing
-      max-width: 400px
-      width: 100%
-      > div:first-child
-        flex-grow: 1
-      > div:last-child
-        margin-left: $spacing
-        flex-shrink: 0
-      @media all and (max-width: $breakpoint)
-        width: 100%
-        max-width: 100%
-    .productItem-Text
-      margin-bottom: $spacing
-  li:last-child
+    margin-bottom: $spacing-3
+  img:last-child
     margin-bottom: 0
-  .product-Image
-    max-width: 400px
-    max-height: calc(100vmin - (2 * #{$spacing}))
-    margin-bottom: $spacing
-    transition: max-width .22s ease-out
-    will-change: max-width
-    transform: translateZ(0)
-    @media all and (max-width: $breakpoint)
-      width: 100%
-      max-width: 100%
-      max-height: 100%
-    &:last-child
+  .post-Info
+    display: flex
+    justify-content: flex-start
+  .post-Images
+    img:last-child
       margin-bottom: 0
-    img
-      width: auto
-      height: auto
-      max-width: 100%
-      max-height: calc(100vmin - (2 * #{$spacing}))
-      cursor: pointer
-      transition: opacity .2s ease
-      &:hover
-        opacity: .75
-      @media all and (max-width: $breakpoint)
-        width: 100%
-        max-height: 100%
-  .product-Image.active
-    max-width: 100%
-    img
-      cursor: zoom-out
-  .product-Footer
+  .post-Footer
     display: flex
     justify-content: space-between
     width: 100%
@@ -122,12 +59,19 @@
         text-decoration: underline
     &_Next img
       transform: rotate(180deg)
-  h2, p
-    display: inline
-    max-width: 400px
-    @media all and (max-width: $breakpoint)
-      width: 100%
-      max-width: 100%
+
+.view-Blog
+  .post-List
+    li
+      cursor: pointer
+      img
+        transition: opacity .2s ease
+    li:hover
+      img
+        opacity: .75
+    .markdown
+      max-height: calc(4 * #{$lineheight-base})
+      overflow: hidden
 
 // TIJDELIJK
 #show-modal
