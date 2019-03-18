@@ -9,12 +9,17 @@
         <p></p>
       </div>
     </div>
-    <p>{{ excerpt }}</p>
+    <MarkdownItem :input="excerpt"/>
   </nuxt-link>
 </template>
 
 <script>
+import MarkdownItem from '~/components/MarkdownItem.vue'
+
 export default {
+  components: {
+    MarkdownItem
+  },
   props: {
     id: {
       type: String,

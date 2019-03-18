@@ -12,7 +12,7 @@
           <p></p>
         </div>
       </div>
-      <p class="productItem-Text">{{ content }}</p>
+      <MarkdownItem :input="content"/>
 
       <div class="product-Image" @click="showModal = true">
         <img v-if="image_0" :src="image_0">
@@ -56,11 +56,13 @@
 </template>
 
 <script>
+import MarkdownItem from '~/components/MarkdownItem.vue'
 import SliderItem from '~/components/SliderItem.vue'
 import ModalItem from '~/components/ModalItem.vue'
 
 export default {
   components: {
+    MarkdownItem,
     SliderItem,
     ModalItem
   },
