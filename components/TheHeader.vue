@@ -18,7 +18,6 @@
         <li>
           <p>
             <span>All Projects</span>
-            <span>/</span>
           </p>
         </li>
         <!-- <li
@@ -33,7 +32,6 @@
           </p>
         </li>-->
         <div class="desktop">
-          <br>
           <br>
         </div>
         <router-link tag="li" to="/about">
@@ -131,7 +129,7 @@
     li.active span:first-child
       text-decoration: underline
     p
-      line-height: 1.4
+      line-height: 1.5
   .menu-arrow
     padding-top: 28px
     padding-right: $spacing-3
@@ -146,6 +144,7 @@
       width: 24px
       height: 13px
       display: inline
+      transform: translateY(6px)
 
 .logo
   display: inline-flex
