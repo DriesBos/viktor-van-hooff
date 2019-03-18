@@ -9,9 +9,6 @@
           <div v-if="title">
             <h1>{{ title }}</h1>
           </div>
-          <div v-if="location">
-            <p>&nbsp;— {{ location }}</p>
-          </div>
         </div>
         <MarkdownItem v-if="content" :input="content" class="post-Content"/>
       </li>
