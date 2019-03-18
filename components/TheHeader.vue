@@ -45,7 +45,7 @@
 
       <ul
         class="menu menu-Filter"
-        v-if="this.$route.name === 'about' || this.$route.name === 'blog-id'"
+        v-if="this.$route.name === 'about' || this.$route.name === 'blog-postId'"
       >
         <router-link tag="li" to="/blog" class="menu-arrow">
           <img class="arrow" src="@/assets/images/arrow.png">
