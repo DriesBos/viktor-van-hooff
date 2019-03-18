@@ -32,15 +32,15 @@
       <div
         v-if="previousProjectId()"
         @click="navigateToProject(previousProjectId())"
-        class="product-Footer_Prev"
+        class="post-Footer_Prev"
       >
         <img class="arrow" src="@/assets/images/arrow.png">
-        <p>Previous Project</p>
+        <p>Previous Post</p>
       </div>
       <div
         v-if="nextProjectId()"
         @click="navigateToProject(nextProjectId())"
-        class="product-Footer_Next"
+        class="post-Footer_Next"
       >
         <p>Next</p>
         <img class="arrow" src="@/assets/images/arrow.png">
@@ -95,6 +95,33 @@ export default {
         }
       })
   }
+  // methods: {
+  //   previousProjectId() {
+  //     const project = this.projects[this.getProjectIndex() - 1]
+  //     if (project) {
+  //       return project.id
+  //     } else {
+  //       return null
+  //     }
+  //   },
+  //   nextProjectId() {
+  //     const project = this.projects[this.getProjectIndex() + 1]
+  //     if (project) {
+  //       return project.id
+  //     } else {
+  //       return null
+  //     }
+  //   },
+  //   navigateToProject(id) {
+  //     this.$router.push({ path: `/projects/${id}` })
+  //   },
+  //   getProjectIndex() {
+  //     let index = this.projects.findIndex(
+  //       element => element.id === this.$route.params.id
+  //     )
+  //     return index === -1 ? 0 : index
+  //   }
+  // },
 }
 </script>
 
