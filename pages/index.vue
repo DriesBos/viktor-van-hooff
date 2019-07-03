@@ -14,7 +14,7 @@
       </ul>
     </div>
     <div class="imageContainer">
-      <img :src="cover">
+      <img v-lazy="cover">
     </div>
   </router-link>
 </template>

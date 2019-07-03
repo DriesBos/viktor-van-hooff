@@ -2,7 +2,7 @@
   <div class="slider-Container">
     <transition-group name="slider" tag="div">
       <div class="image-Slider" v-for="number in [currentNumber]" :key="number">
-        <img :src="currentImage | resize('1000x1000')">
+        <img v-lazy="currentImage | resize('1000x1000')">
         <div @click="previous" class="image-Slider_Nav image-Slider_Prev">
           <img src="@/assets/images/arrow.png">
         </div>

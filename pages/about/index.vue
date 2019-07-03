@@ -3,7 +3,7 @@
     <ul class="post-List">
       <li class="post-Item">
         <div v-if="thumbnail" class="post-Thumbnail" @click="showModal = true">
-          <img :src="thumbnail">
+          <img v-lazy="thumbnail">
         </div>
         <div class="post-Info">
           <div v-if="title">
