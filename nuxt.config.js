@@ -68,8 +68,8 @@ module.exports = {
       {
         accessToken:
           process.env.NODE_ENV === 'production' // Generate new token
-            ? 'wu4ewcwlPLRtdoB5irDemwtt'
-            : 'wu4ewcwlPLRtdoB5irDemwtt',
+            ? 'ZUrjuKH7ZkKeeJ9mSvgeNgtt'
+            : 'uYFcjpxfWC5YHy5963LoHQtt',
         cacheProvider: 'memory'
       }
     ]
@@ -81,7 +81,7 @@ module.exports = {
     routes: function() {
       return axios
         .get(
-          'https://api.storyblok.com/v1/cdn/stories?version=published&token=wu4ewcwlPLRtdoB5irDemwtt&starts_with=blog&cv=' +
+          'https://api.storyblok.com/v1/cdn/stories?version=published&token=uYFcjpxfWC5YHy5963LoHQtt&starts_with=blog&cv=' +
             Math.floor(Date.now() / 1e3)
         )
         .then(res => {
@@ -106,7 +106,7 @@ module.exports = {
      */
     extend(config, ctx) {
       // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
+      if (ctx.isDev && ctx.isClient && 1 == 2) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,

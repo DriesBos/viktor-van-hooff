@@ -2,8 +2,8 @@
   <div class="view-General view-About">
     <ul class="post-List">
       <li class="post-Item">
-        <div v-if="thumbnail" class="post-Thumbnail" @click="showModal = true">
-          <img v-lazy="thumbnail">
+        <div v-if="thumbnail" class="post-Thumbnail" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="thumbnail | resize('380x250')" width="380" height="250">
         </div>
         <div class="post-Info">
           <div v-if="title">

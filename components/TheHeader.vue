@@ -1,98 +1,72 @@
 <template>
   <transition name="headeritem">
     <div class="headerItem" v-if="this.$route.path !== '/'">
-      <router-link class="logo" tag="ul" to="/">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      <router-link tag="a" to="/">
+      	<ul class="logo">
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	    </ul>
       </router-link>
 
-      <ul class="menu menu-Filter" v-if="this.$route.path === '/blog'">
-        <!-- <li v-on:click="deselectCategory()" v-bind:class="{active: isAllCategoriesSelected()}"> -->
-        <li>
-          <p>
-            <span>All Projects</span>
-          </p>
-        </li>
-        <!-- <li
-          v-for="category in categories"
-          :key="category.id"
-          v-on:click="selectCategory(category)"
-          v-bind:class="{active: isSelected(category)}"
+      <ul class="menu menu-Filter" v-if="this.$route.path === '/blog' || this.$route.path.indexOf('/category/') === 0">
+        <li
+        	v-bind:class="{active: !selectedCategory}"
         >
-          <p>
-            <span>{{ category.title }}</span>
-            <span>&nbsp;/&nbsp;</span>
-          </p>
-        </li>-->
+          <router-link tag="a" to="/blog">
+            <span class="text">All Projects</span>
+          </router-link>
+        </li>
+        <li
+          v-for="category in categories"
+          v-bind:class="{active: selectedCategory == category.id}"
+        >
+          <router-link tag="a" :to="'/category/' + category.id">
+          	<span>&nbsp;/&nbsp;</span>
+            <span class="text">{{ category.name }}</span>
+          </router-link>
+        </li>
         <div class="desktop">
           <br>
         </div>
-        <router-link tag="li" to="/about">
-          <p>
-            <span>About</span>
-          </p>
-        </router-link>
+        <li>
+	        <router-link tag="a" to="/about">
+	          <span>About</span>
+	        </router-link>
+        </li>
       </ul>
 
       <ul
         class="menu menu-Filter"
         v-if="this.$route.name === 'about' || this.$route.name === 'blog-postId'"
       >
-        <router-link tag="li" to="/blog" class="menu-arrow">
-          <img class="arrow" src="@/assets/images/arrow.png">
-          <p>
-            <span>Index</span>
-          </p>
-        </router-link>
+	    <li>
+	        <router-link tag="a" to="/blog" class="menu-arrow">
+	          <img class="arrow" src="@/assets/images/arrow.png">
+	          <span>Index</span>
+	        </router-link>
+	    </li>
       </ul>
     </div>
   </transition>
 </template>
 
 <script>
-// export default {
-//   data() {
-//     return {
-//       query: ''
-//     }
-//   },
-//   computed: {
-//     categories() {
-//       return this.$store.getters['categories/list']
-//     }
-//   },
-//   methods: {
-//     isAllCategoriesSelected: function() {
-//       const selected = this.$store.getters['categories/selected']
-//       if (selected === null) {
-//         return true
-//       } else {
-//         return false
-//       }
-//     },
-//     isSelected: function(category) {
-//       const selected = this.$store.getters['categories/selected']
-//       if (selected) {
-//         return category.id === this.$store.getters['categories/selected'].id
-//       } else {
-//         return false
-//       }
-//     },
-//     selectCategory: function(category) {
-//       this.$store.commit('categories/selectCategory', category)
-//     },
-//     deselectCategory: function() {
-//       this.$store.commit('categories/deselectCategory')
-//     }
-//   }
-// }
+import { mapState } from 'vuex'
+export default {
+  computed: mapState({
+  	categories: state => state.categories.list,
+  	selectedCategory(state) {
+	  	return this.$route.params.categoryId
+  	}
+  })
+}
 </script>
 
 <style lang="sass">
@@ -113,7 +87,7 @@
   .menu
     position: relative
     display: inline-block
-    width: 230px
+    width: 500px
     margin-left: $spacing-3
     @media all and (max-width: $breakpoint)
       width: auto
@@ -121,12 +95,11 @@
       flex-grow: 1
     li
       display: inline-block
-      span:first-child
-        display: inline
-        cursor: pointer
-      span:first-child:hover
-        text-decoration: underline
-    li.active span:first-child
+      a
+      	text-decoration: none
+      a:hover .text
+      	text-decoration: underline
+    li.active a .text
       text-decoration: underline
     p
       line-height: 1.5
@@ -145,6 +118,7 @@
       height: 13px
       display: inline
       transform: translateY(6px)
+      opacity: 1
 
 .logo
   display: inline-flex
