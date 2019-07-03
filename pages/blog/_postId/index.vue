@@ -28,24 +28,24 @@
         </div>
       </li>
     </ul>
-    <!-- <div class="post-Footer">
-      <div
-        v-if="previousProjectId()"
-        @click="navigateToProject(previousProjectId())"
+    <div class="post-Footer">
+      <a
+        v-if="previous_id"
+        @click="navigateToProject(previous_id)"
         class="post-Footer_Prev"
       >
         <img class="arrow" src="@/assets/images/arrow.png">
         <p>Previous Post</p>
-      </div>
-      <div
-        v-if="nextProjectId()"
-        @click="navigateToProject(nextProjectId())"
+      </a>
+      <a
+        v-if="next_id"
+        @click="navigateToProject(next_id)"
         class="post-Footer_Next"
       >
         <p>Next</p>
         <img class="arrow" src="@/assets/images/arrow.png">
-      </div>
-    </div>-->
+      </a>
+    </div>
     <modalItem v-if="showModal" @close="showModal = false">
       <sliderItem
         @close="showModal = false"
@@ -58,7 +58,14 @@
 <script>
 import MarkdownItem from '~/components/MarkdownItem.vue'
 import SliderItem from '~/components/SliderItem.vue'
-import ModalItem from '~/components/ModalItem.vue'
+import ModalItem from '~/components/ModalItem.vue';
+
+function getProjectIndex(projects, id) {
+	let index = projects.findIndex(
+		element => element.id === id
+	)
+	return index === -1 ? 0 : index
+}
 
 export default {
   components: {
@@ -71,12 +78,16 @@ export default {
       showModal: false
     }
   },
-  asyncData(context) {
-    return context.app.$storyapi
-      .get('cdn/stories/blog/' + context.params.postId, {
+  asyncData({app, store, params}) {
+    return app.$storyapi
+      .get('cdn/stories/blog/' + params.postId, {
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'
       })
       .then(res => {
+	    let previous = store.state.projects.list[getProjectIndex(store.state.projects.list, params.postId) - 1],
+	    	next = store.state.projects.list[getProjectIndex(store.state.projects.list, params.postId) + 1],
+	    	previous_id = previous ? previous.id : null,
+	    	next_id = next ? next.id : null;
         return {
           title: res.data.story.content.title,
           location: res.data.story.content.location,
@@ -91,37 +102,17 @@ export default {
           image_6: res.data.story.content.image_6,
           image_7: res.data.story.content.image_7,
           image_8: res.data.story.content.image_8,
-          image_9: res.data.story.content.image_9
+          image_9: res.data.story.content.image_9,
+          previous_id,
+          next_id
         }
       })
+  },
+  methods: {
+    navigateToProject(id) {
+      this.$router.push({ path: `/blog/${id}` })
+    }
   }
-  // methods: {
-  //   previousProjectId() {
-  //     const project = this.projects[this.getProjectIndex() - 1]
-  //     if (project) {
-  //       return project.id
-  //     } else {
-  //       return null
-  //     }
-  //   },
-  //   nextProjectId() {
-  //     const project = this.projects[this.getProjectIndex() + 1]
-  //     if (project) {
-  //       return project.id
-  //     } else {
-  //       return null
-  //     }
-  //   },
-  //   navigateToProject(id) {
-  //     this.$router.push({ path: `/projects/${id}` })
-  //   },
-  //   getProjectIndex() {
-  //     let index = this.projects.findIndex(
-  //       element => element.id === this.$route.params.id
-  //     )
-  //     return index === -1 ? 0 : index
-  //   }
-  // },
 }
 </script>
 

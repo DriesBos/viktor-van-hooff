@@ -2,7 +2,7 @@
   <div class="slider-Container">
     <transition-group name="slider" tag="div">
       <div class="image-Slider" v-for="number in [currentNumber]" :key="number">
-        <img :src="currentImage">
+        <img :src="currentImage | resize('1000x1000')">
         <div @click="previous" class="image-Slider_Nav image-Slider_Prev">
           <img src="@/assets/images/arrow.png">
         </div>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+	
 export default {
   name: 'SliderItem',
   props: {
@@ -27,17 +28,23 @@ export default {
   },
   methods: {
     next: function() {
-      this.currentNumber += 1
+	  if(this.currentNumber >= (this.images.length-1)) {
+		this.currentNumber = 0
+	  } else {
+      	this.currentNumber += 1
+      }
     },
     previous: function() {
-      this.currentNumber -= 1
+	  if(this.currentNumber > 0) {
+      	this.currentNumber -= 1
+      } else {
+	    this.currentNumber = this.images.length-1
+      }
     }
   },
   computed: {
     currentImage: function() {
-      return `${this.apiUrl}/${
-        this.images[Math.abs(this.currentNumber) % this.images.length].url
-      }`
+      return this.images[this.currentNumber]
     }
   }
 }

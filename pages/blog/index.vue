@@ -2,7 +2,7 @@
   <div class="view-General view-Blog">
     <transition-group class="post-List" tag="ul">
       <PostPreview
-        v-for="post in posts"
+        v-for="post in projects"
         :id="post.id"
         :key="post.id"
         :title="post.title"
@@ -16,30 +16,14 @@
 
 <script>
 import PostPreview from '~/components/PostPreview.vue'
+import { mapState } from 'vuex'
 
 export default {
   components: {
     PostPreview: PostPreview
   },
-  asyncData(context) {
-    return context.app.$storyapi
-      .get('cdn/stories', {
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-        starts_with: 'blog/'
-      })
-      .then(res => {
-        return {
-          posts: res.data.stories.map(bp => {
-            return {
-              id: bp.slug,
-              title: bp.content.title,
-              location: bp.content.location,
-              excerpt: bp.content.excerpt,
-              thumbnail: bp.content.thumbnail
-            }
-          })
-        }
-      })
-  }
+  computed: mapState({
+  	projects: state => state.projects.list
+  })
 }
 </script>

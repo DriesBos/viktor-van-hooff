@@ -1,7 +1,7 @@
 <template>
   <nuxt-link :to="'/blog/' + id" tag="li" class="post-Item">
     <div v-if="thumbnail" class="post-Thumbnail">
-      <img :src="thumbnail">
+      <img :src="thumbnail | resize('380x250')">
     </div>
     <div class="post-Info">
       <div v-if="title">

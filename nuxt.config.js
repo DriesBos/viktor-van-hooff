@@ -55,7 +55,9 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+	  '~plugins/filters.js'
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -66,8 +68,8 @@ module.exports = {
       {
         accessToken:
           process.env.NODE_ENV === 'production' // Generate new token
-            ? 'TOKEN REMOVED FOR EXAMPLE'
-            : 'TOKEN REMOVED FOR EXAMPLE',
+            ? 'wu4ewcwlPLRtdoB5irDemwtt'
+            : 'wu4ewcwlPLRtdoB5irDemwtt',
         cacheProvider: 'memory'
       }
     ]
