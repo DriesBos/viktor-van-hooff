@@ -1,5 +1,8 @@
 <template>
-  <router-link class="home" tag="div" to="/blog">
+  <router-link class="home" tag="a" to="/blog">
+    <div class="imageContainer" v-lazy-container="{ selector: 'img' }">
+      <img :data-src="cover | resize('1920x1280')">
+    </div>
     <div class="landing">
       <ul class="logo">
         <li></li>
@@ -12,9 +15,6 @@
         <li></li>
         <li></li>
       </ul>
-    </div>
-    <div class="imageContainer">
-      <img :src="cover">
     </div>
   </router-link>
 </template>
@@ -42,6 +42,7 @@ export default {
   width: 100%
   height: calc(100vh - (2 * #{$spacing-3}))
   cursor: pointer
+  display: block
   img
     width: 100%
     height: 100%

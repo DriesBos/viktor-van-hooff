@@ -1,7 +1,7 @@
 <template>
   <li>
     <div class="product-Image" @click="showModal = true">
-      <img :src="thumbnail">
+      <img :data-src="thumbnail">
     </div>
     <div class="product-TitleDate">
       <div>
@@ -14,16 +14,16 @@
     <MarkdownItem :input="content"/>
 
     <div class="product-Image" @click="showModal = true">
-      <img v-if="image_0" :src="image_0">
-      <img v-if="image_1" :src="image_1">
-      <img v-if="image_2" :src="image_2">
-      <img v-if="image_3" :src="image_3">
-      <img v-if="image_4" :src="image_4">
-      <img v-if="image_5" :src="image_5">
-      <img v-if="image_6" :src="image_6">
-      <img v-if="image_7" :src="image_7">
-      <img v-if="image_8" :src="image_8">
-      <img v-if="image_9" :src="image_9">
+      <img v-if="image_0" :data-src="image_0">
+      <img v-if="image_1" :data-src="image_1">
+      <img v-if="image_2" :data-src="image_2">
+      <img v-if="image_3" :data-src="image_3">
+      <img v-if="image_4" :data-src="image_4">
+      <img v-if="image_5" :data-src="image_5">
+      <img v-if="image_6" :data-src="image_6">
+      <img v-if="image_7" :data-src="image_7">
+      <img v-if="image_8" :data-src="image_8">
+      <img v-if="image_9" :data-src="image_9">
     </div>
 
     <!-- <div class="product-Footer">

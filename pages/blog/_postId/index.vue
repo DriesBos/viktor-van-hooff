@@ -2,9 +2,9 @@
   <div class="view-General view-Post">
     <ul class="post-List">
       <li class="post-Item">
-        <div v-if="thumbnail" class="post-Thumbnail" @click="showModal = true">
-          <img :src="thumbnail">
-        </div>
+        <a v-if="thumbnail" class="post-Thumbnail" @click="sliderIndex = 0" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="thumbnail | resize('380x250')" width="380" height="250">
+        </a>
         <div class="post-Info">
           <div v-if="title">
             <h1>{{ title }}</h1>
@@ -14,41 +14,52 @@
           </div>
         </div>
         <MarkdownItem v-if="content" :input="content" class="post-Content"/>
-        <div v-if="image_0" class="post-Images" @click="showModal = true">
-          <img v-if="image_0" :src="image_0">
-          <img v-if="image_1" :src="image_1">
-          <img v-if="image_2" :src="image_2">
-          <img v-if="image_3" :src="image_3">
-          <img v-if="image_4" :src="image_4">
-          <img v-if="image_5" :src="image_5">
-          <img v-if="image_6" :src="image_6">
-          <img v-if="image_7" :src="image_7">
-          <img v-if="image_8" :src="image_8">
-          <img v-if="image_9" :src="image_9">
-        </div>
+        <a v-if="image_0" class="post-Images" @click="sliderIndex = 1" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_0 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_1" class="post-Images" @click="sliderIndex = 2" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_1 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_2" class="post-Images" @click="sliderIndex = 3" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_2 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_3" class="post-Images" @click="sliderIndex = 4" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_3 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_4" class="post-Images" @click="sliderIndex = 5" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_4 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_5" class="post-Images" @click="sliderIndex = 6" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_5 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_6" class="post-Images" @click="sliderIndex = 7" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_6 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_7" class="post-Images" @click="sliderIndex = 8" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_7 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_8" class="post-Images" @click="sliderIndex = 9" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_8 | resize('380x250')" width="380" height="250">
+        </a>
+        <a v-if="image_9" class="post-Images" @click="sliderIndex = 10" v-lazy-container="{ selector: 'img' }">
+          <img :data-src="image_9 | resize('380x250')" width="380" height="250">
+        </a>
       </li>
     </ul>
-    <!-- <div class="post-Footer">
-      <div
-        v-if="previousProjectId()"
-        @click="navigateToProject(previousProjectId())"
-        class="post-Footer_Prev"
-      >
+    <div class="post-Footer" v-bind:class="{ 'post-Footer--spaced': previous_url && next_url, 'post-Footer--end': next_url && ! previous_url }">
+	  <router-link v-if="previous_url" class="post-Footer_Control post-Footer_Prev" tag="a" :to="previous_url">
         <img class="arrow" src="@/assets/images/arrow.png">
-        <p>Previous Post</p>
-      </div>
-      <div
-        v-if="nextProjectId()"
-        @click="navigateToProject(nextProjectId())"
-        class="post-Footer_Next"
-      >
-        <p>Next</p>
+        <span>Previous</span>
+      </router-link>
+	  <router-link v-if="next_url" class="post-Footer_Control post-Footer_Next" tag="a" :to="next_url">
+        <span>Next</span>
         <img class="arrow" src="@/assets/images/arrow.png">
-      </div>
-    </div>-->
-    <modalItem v-if="showModal" @close="showModal = false">
+      </router-link>
+    </div>
+    <modalItem v-if="sliderIndex > -1" @close="sliderIndex = -1">
       <sliderItem
-        @close="showModal = false"
+        @close="sliderIndex = -1"
+        :index="sliderIndex"
         :images="[thumbnail, image_0, image_1, image_2, image_3, image_4, image_5, image_6, image_7, image_8, image_9]"
       ></sliderItem>
     </modalItem>
@@ -58,7 +69,14 @@
 <script>
 import MarkdownItem from '~/components/MarkdownItem.vue'
 import SliderItem from '~/components/SliderItem.vue'
-import ModalItem from '~/components/ModalItem.vue'
+import ModalItem from '~/components/ModalItem.vue';
+
+function getProjectIndex(projects, id) {
+	let index = projects.findIndex(
+		element => element.id === id
+	)
+	return index === -1 ? 0 : index
+}
 
 export default {
   components: {
@@ -68,15 +86,17 @@ export default {
   },
   data() {
     return {
-      showModal: false
+      sliderIndex: -1
     }
   },
-  asyncData(context) {
-    return context.app.$storyapi
-      .get('cdn/stories/blog/' + context.params.postId, {
+  asyncData({app, store, params}) {
+    return app.$storyapi
+      .get('cdn/stories/blog/' + params.postId, {
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'
       })
       .then(res => {
+	    let previous = store.state.projects.list[getProjectIndex(store.state.projects.list, params.postId) - 1],
+	    	next = store.state.projects.list[getProjectIndex(store.state.projects.list, params.postId) + 1];
         return {
           title: res.data.story.content.title,
           location: res.data.story.content.location,
@@ -91,41 +111,46 @@ export default {
           image_6: res.data.story.content.image_6,
           image_7: res.data.story.content.image_7,
           image_8: res.data.story.content.image_8,
-          image_9: res.data.story.content.image_9
+          image_9: res.data.story.content.image_9,
+          previous_url: previous ? '/blog/' + previous.id : null,
+          next_url: next ? '/blog/' + next.id : null
         }
       })
+  },
+  methods: {
+    navigateToProject(id) {
+      this.$router.push({ path: `/blog/${id}` })
+    }
   }
-  // methods: {
-  //   previousProjectId() {
-  //     const project = this.projects[this.getProjectIndex() - 1]
-  //     if (project) {
-  //       return project.id
-  //     } else {
-  //       return null
-  //     }
-  //   },
-  //   nextProjectId() {
-  //     const project = this.projects[this.getProjectIndex() + 1]
-  //     if (project) {
-  //       return project.id
-  //     } else {
-  //       return null
-  //     }
-  //   },
-  //   navigateToProject(id) {
-  //     this.$router.push({ path: `/projects/${id}` })
-  //   },
-  //   getProjectIndex() {
-  //     let index = this.projects.findIndex(
-  //       element => element.id === this.$route.params.id
-  //     )
-  //     return index === -1 ? 0 : index
-  //   }
-  // },
 }
 </script>
 
 <style lang="sass" scoped>
+.arrow
+	opacity: 1
+	width: 18px
+	height: 10px
+	display: inline
+.post-Footer
+	display: flex
+	margin-bottom: 25px
+.post-Footer--spaced
+	justify-content: space-between
+.post-Footer--end
+	justify-content: flex-end
+.post-Thumbnail, .post-Images
+	display: block
+	margin-bottom: 25px
+.post-Footer_Control
+	display: flex;
+	align-items: center;
+.post-Footer_Next
+	.arrow
+		transform: rotate(180deg)
+		margin-left: 10px
+.post-Footer_Prev
+	.arrow
+		margin-right: 10px
 .view-Project
   margin-top: 100px
   display: flex
