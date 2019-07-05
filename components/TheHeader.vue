@@ -2,43 +2,41 @@
   <transition name="headeritem">
     <div class="headerItem" v-if="this.$route.path !== '/'">
       <router-link tag="a" to="/">
-      	<ul class="logo">
-	        <li></li>
-	        <li></li>
-	        <li></li>
-	        <li></li>
-	        <li></li>
-	        <li></li>
-	        <li></li>
-	        <li></li>
-	        <li></li>
-	    </ul>
+        <ul class="logo">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </router-link>
 
-      <ul class="menu menu-Filter" v-if="this.$route.path === '/blog' || this.$route.path.indexOf('/category/') === 0">
-        <li
-        	v-bind:class="{active: !selectedCategory}"
-        >
+      <ul
+        class="menu menu-Filter"
+        v-if="this.$route.path === '/blog' || this.$route.path.indexOf('/category/') === 0"
+      >
+        <li v-bind:class="{active: !selectedCategory}">
           <router-link tag="a" to="/blog">
             <span class="text">All Projects</span>
           </router-link>
         </li>
-        <li
-          v-for="category in categories"
-          v-bind:class="{active: selectedCategory == category.id}"
-        >
+        <li v-for="category in categories" v-bind:class="{active: selectedCategory == category.id}">
           <router-link tag="a" :to="'/category/' + category.id">
-          	<span>&nbsp;/&nbsp;</span>
+            <span>&nbsp;/&nbsp;</span>
             <span class="text">{{ category.name }}</span>
           </router-link>
         </li>
         <div class="desktop">
-          <br>
+          <br />
         </div>
         <li>
-	        <router-link tag="a" to="/about">
-	          <span>About</span>
-	        </router-link>
+          <router-link tag="a" to="/about">
+            <span>About</span>
+          </router-link>
         </li>
       </ul>
 
@@ -46,12 +44,12 @@
         class="menu menu-Filter"
         v-if="this.$route.name === 'about' || this.$route.name === 'blog-postId'"
       >
-	    <li>
-	        <router-link tag="a" to="/blog" class="menu-arrow">
-	          <img class="arrow" src="@/assets/images/arrow.png">
-	          <span>Index</span>
-	        </router-link>
-	    </li>
+        <li>
+          <router-link tag="a" to="/blog" class="menu-arrow icon">
+            <img class="arrow" src="@/assets/images/arrow-left.svg" />
+            <span>Index</span>
+          </router-link>
+        </li>
       </ul>
     </div>
   </transition>
@@ -61,10 +59,10 @@
 import { mapState } from 'vuex'
 export default {
   computed: mapState({
-  	categories: state => state.categories.list,
-  	selectedCategory(state) {
-	  	return this.$route.params.categoryId
-  	}
+    categories: state => state.categories.list,
+    selectedCategory(state) {
+      return this.$route.params.categoryId
+    }
   })
 }
 </script>
@@ -104,21 +102,13 @@ export default {
     p
       line-height: 1.5
   .menu-arrow
-    padding-top: 28px
     padding-right: $spacing-3
-    padding-bottom: 28px
+    padding-bottom: $spacing-3
     cursor: pointer
-    &:hover > p
+    &:hover > span
       text-decoration: underline
-    p
-      display: inline
-      margin-left: 6px
     img
-      width: 24px
-      height: 13px
-      display: inline
-      transform: translateY(6px)
-      opacity: 1
+      transform: translateY(-3px)
 
 .logo
   display: inline-flex

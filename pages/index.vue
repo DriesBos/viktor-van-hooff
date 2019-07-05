@@ -1,7 +1,7 @@
 <template>
   <router-link class="home" tag="a" to="/blog">
     <div class="imageContainer" v-lazy-container="{ selector: 'img' }">
-      <img :data-src="cover | resize('1920x1280')">
+      <img :data-src="cover | resize('0x0')" />
     </div>
     <div class="landing">
       <ul class="logo">

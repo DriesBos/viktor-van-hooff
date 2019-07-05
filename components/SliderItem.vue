@@ -1,16 +1,21 @@
 <template>
   <div class="slider-Container">
     <transition-group name="slider" tag="div">
-      <div class="image-Slider" v-for="number in [index]" :key="number" v-lazy-container="{ selector: '.image' }">
-	    <a @click="close" class="image-Slider_Close">
-          <img src="@/assets/images/close.png">
+      <div
+        class="image-Slider"
+        v-for="number in [index]"
+        :key="number"
+        v-lazy-container="{ selector: '.image' }"
+      >
+        <a @click="close" class="image-Slider_Close icon">
+          <img src="@/assets/images/close.svg" />
         </a>
-        <img :data-src="currentImage | resize('1920x1280')" class="image">
-        <a @click="previous" class="image-Slider_Nav image-Slider_Prev">
-          <img src="@/assets/images/arrow.png">
+        <img :data-src="currentImage | resize('1680x0')" class="image" />
+        <a @click="previous" class="image-Slider_Nav image-Slider_Prev icon">
+          <img src="@/assets/images/arrow-left.svg" />
         </a>
-        <a @click="next" class="image-Slider_Nav image-Slider_Next">
-          <img src="@/assets/images/arrow.png">
+        <a @click="next" class="image-Slider_Nav image-Slider_Next icon">
+          <img src="@/assets/images/arrow-right.svg" />
         </a>
       </div>
     </transition-group>
@@ -18,7 +23,6 @@
 </template>
 
 <script>
-	
 export default {
   name: 'SliderItem',
   props: {
@@ -26,37 +30,37 @@ export default {
     index: 0
   },
   methods: {
-	increment: function() {
-		if(this.index >= (this.images.length-1)) {
-			this.index = 0
-		  } else {
-	      	this.index += 1
-	      }	
-	},
-	decrement: function() {
-		if(this.index > 0) {
-	      	this.index -= 1
-	      } else {
-		    this.index = this.images.length-1
-	      }
-	},
-	getCurrentImage: function() {
+    increment: function() {
+      if (this.index >= this.images.length - 1) {
+        this.index = 0
+      } else {
+        this.index += 1
+      }
+    },
+    decrement: function() {
+      if (this.index > 0) {
+        this.index -= 1
+      } else {
+        this.index = this.images.length - 1
+      }
+    },
+    getCurrentImage: function() {
       return this.images[this.index]
     },
     next: function() {
-	  this.increment();
-	  while(!this.getCurrentImage()) {
-		  this.increment();
-	  }
+      this.increment()
+      while (!this.getCurrentImage()) {
+        this.increment()
+      }
     },
     close: function() {
-		this.index = -1;  
+      this.index = -1
     },
     previous: function() {
-	  this.decrement();
-	  while(!this.getCurrentImage()) {
-		  this.decrement();
-	  }
+      this.decrement()
+      while (!this.getCurrentImage()) {
+        this.decrement()
+      }
     }
   },
   computed: {
@@ -84,18 +88,14 @@ export default {
   height: 100%
   width: 100%
   .image
-    width: 95%
-    height: 95%
-    object-fit: cover
+    width: 100%
+    height: 100%
+    object-fit: contain
     object-position: center center
 .image-Slider_Close
   position: absolute
   top: 0
   left: 0
-  img
-  	opacity: 1
-  	width: 24px
-    height: 24px
 .image-Slider_Nav
   display: block
   position: fixed
@@ -104,16 +104,10 @@ export default {
   transform: translateY(-50%)
   cursor: pointer
   padding: $spacing-3
-  img
-    width: 30px
-    height: 17px
-    opacity: 1
 .image-Slider_Prev
   left: 0
 .image-Slider_Next
   right: 0
-  img
-    transform: rotate(180deg)
 
 .slider-enter-active, .slider-leave-active
   transition: all .2s ease
