@@ -11,6 +11,13 @@
   float: right
   @media all and (max-width: $breakpoint)
     max-width: 100%
+    
+img
+  transition: opacity 1s ease-in-out
+  opacity: 0
+  
+img[lazy="loaded"]
+  opacity: 1
 
 .post-List
   li
@@ -62,10 +69,6 @@
 
 .view-Blog
   .post-List
-    li
-      cursor: pointer
-      img
-        transition: opacity .2s ease
     li:hover
       img
         opacity: .55
