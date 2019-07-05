@@ -225,14 +225,14 @@ export default {
   flex-direction: column
   justify-content: center
   align-items: center
-.project-List
-  display: flex
-  flex-direction: column
-  width: 500px
-  li
-    background: lightblue
-    margin-bottom: 100px
-  img
-    width: 100%
-    height: auto
+// .project-List
+//   display: flex
+//   flex-direction: column
+//   width: 500px
+//   li
+//     background: lightblue
+//     margin-bottom: 100px
+//   img
+//     width: 100%
+//     height: auto
 </style>
