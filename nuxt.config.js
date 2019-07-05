@@ -66,8 +66,8 @@ module.exports = {
       {
         accessToken:
           process.env.NODE_ENV === 'production' // Generate new token
-            ? 'ZUrjuKH7ZkKeeJ9mSvgeNgtt' // Public
-            : 'uYFcjpxfWC5YHy5963LoHQtt', // Preview
+            ? 'wu4ewcwlPLRtdoB5irDemwtt' // Public
+            : 'CGvg5T8va1BLd26eGNRFKAtt', // Preview
         cacheProvider: 'memory'
       }
     ]
@@ -79,7 +79,7 @@ module.exports = {
     routes: function() {
       return axios
         .get(
-          'https://api.storyblok.com/v1/cdn/stories?version=published&token=uYFcjpxfWC5YHy5963LoHQtt&starts_with=blog&cv=' +
+          'https://api.storyblok.com/v1/cdn/stories?version=published&token=CGvg5T8va1BLd26eGNRFKAtt&starts_with=blog&cv=' +
             Math.floor(Date.now() / 1e3)
         )
         .then(res => {
