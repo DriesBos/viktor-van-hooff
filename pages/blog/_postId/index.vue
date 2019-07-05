@@ -107,21 +107,21 @@
     >
       <router-link
         v-if="previous_url"
-        class="post-Footer_Control post-Footer_Prev"
+        class="post-Footer_Control post-Footer_Prev icon"
         tag="a"
         :to="previous_url"
       >
-        <img class="arrow" src="@/assets/images/arrow.png" />
+        <img src="@/assets/images/arrow-left.svg" />
         <span>Previous</span>
       </router-link>
       <router-link
         v-if="next_url"
-        class="post-Footer_Control post-Footer_Next"
+        class="post-Footer_Control post-Footer_Next icon"
         tag="a"
         :to="next_url"
       >
         <span>Next</span>
-        <img class="arrow" src="@/assets/images/arrow.png" />
+        <img src="@/assets/images/arrow-right.svg" />
       </router-link>
     </div>
     <modalItem v-if="sliderIndex > -1" @close="sliderIndex = -1">
@@ -198,14 +198,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.arrow
-	opacity: 1
-	width: 18px
-	height: 10px
-	display: inline
+@import '~/assets/styling/variables.sass'
+
 .post-Footer
 	display: flex
-	margin-bottom: 25px
+	margin-bottom: $spacing-3
 .post-Footer--spaced
 	justify-content: space-between
 .post-Footer--end
@@ -214,14 +211,13 @@ export default {
 	display: block
 	margin-bottom: 25px
 .post-Footer_Control
-	display: flex;
-	align-items: center;
+	display: flex
+	align-items: center
 .post-Footer_Next
-	.arrow
-		transform: rotate(180deg)
+	img
 		margin-left: 10px
 .post-Footer_Prev
-	.arrow
+	img
 		margin-right: 10px
 .view-Project
   margin-top: 100px

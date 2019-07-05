@@ -2,8 +2,8 @@
   <transition name="modal">
     <div class="modal-Container">
       <div class="modal-CloseBackground" @click="$emit('close')">
-        <div class="modal-Close" @click="$emit('close')">
-          <img src="@/assets/images/close.png">
+        <div class="modal-Close icon" @click="$emit('close')">
+          <img src="@/assets/images/close.svg" />
         </div>
 
         <div class="modal-Content" @click.stop>
@@ -55,9 +55,6 @@ export default {
     left: 0
     padding: $spacing-3
     cursor: pointer
-    img
-      width: 18px
-      height: 18px
   &-Content
     height: 100%
     width: 100%
