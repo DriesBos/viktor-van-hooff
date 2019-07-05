@@ -11,13 +11,19 @@
   float: right
   @media all and (max-width: $breakpoint)
     max-width: 100%
-    
+
 img
-  transition: opacity 1s ease-in-out
+  transition: opacity .2s ease-in-out
   opacity: 0
-  
+
 img[lazy="loaded"]
   opacity: 1
+
+.icon
+  img
+    opacity: 1
+    width: 30px
+    height: 30px
 
 .post-List
   li

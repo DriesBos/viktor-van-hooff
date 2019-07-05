@@ -3,14 +3,14 @@
     <ul class="post-List">
       <li class="post-Item">
         <div v-if="thumbnail" class="post-Thumbnail" v-lazy-container="{ selector: 'img' }">
-          <img :data-src="thumbnail | resize('380x250')" width="380" height="250">
+          <img :data-src="thumbnail | resize('760x0')" width="760" height="auto" />
         </div>
         <div class="post-Info">
           <div v-if="title">
             <h1>{{ title }}</h1>
           </div>
         </div>
-        <MarkdownItem v-if="content" :input="content" class="post-Content"/>
+        <MarkdownItem v-if="content" :input="content" class="post-Content" />
       </li>
     </ul>
   </div>

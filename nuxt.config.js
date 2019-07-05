@@ -55,9 +55,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-	  '~plugins/filters.js'
-  ],
+  plugins: ['~plugins/filters.js'],
   /*
    ** Nuxt.js modules
    */
@@ -68,8 +66,8 @@ module.exports = {
       {
         accessToken:
           process.env.NODE_ENV === 'production' // Generate new token
-            ? 'ZUrjuKH7ZkKeeJ9mSvgeNgtt'
-            : 'uYFcjpxfWC5YHy5963LoHQtt',
+            ? 'wu4ewcwlPLRtdoB5irDemwtt' // Public
+            : 'CGvg5T8va1BLd26eGNRFKAtt', // Preview
         cacheProvider: 'memory'
       }
     ]
@@ -81,7 +79,7 @@ module.exports = {
     routes: function() {
       return axios
         .get(
-          'https://api.storyblok.com/v1/cdn/stories?version=published&token=uYFcjpxfWC5YHy5963LoHQtt&starts_with=blog&cv=' +
+          'https://api.storyblok.com/v1/cdn/stories?version=published&token=CGvg5T8va1BLd26eGNRFKAtt&starts_with=blog&cv=' +
             Math.floor(Date.now() / 1e3)
         )
         .then(res => {
@@ -106,7 +104,7 @@ module.exports = {
      */
     extend(config, ctx) {
       // Run ESLint on save
-      if (ctx.isDev && ctx.isClient && 1 == 2) {
+      if (ctx.isDev && ctx.isClient && 1 === 2) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
