@@ -66,8 +66,8 @@ module.exports = {
       {
         accessToken:
           process.env.NODE_ENV === 'production' // Generate new token
-            ? 'ZUrjuKH7ZkKeeJ9mSvgeNgtt'
-            : 'uYFcjpxfWC5YHy5963LoHQtt',
+            ? 'ZUrjuKH7ZkKeeJ9mSvgeNgtt' // Public
+            : 'uYFcjpxfWC5YHy5963LoHQtt', // Preview
         cacheProvider: 'memory'
       }
     ]
