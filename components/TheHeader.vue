@@ -1,18 +1,8 @@
 <template>
   <transition name="headeritem">
     <div class="headerItem" v-if="this.$route.path !== '/'">
-      <router-link tag="a" to="/">
-        <ul class="logo">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+      <router-link class="logo" tag="a" to="/">
+        <img src="@/assets/images/logo.svg" />
       </router-link>
 
       <ul

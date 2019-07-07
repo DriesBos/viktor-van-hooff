@@ -3,18 +3,8 @@
     <div class="imageContainer" v-lazy-container="{ selector: 'img' }">
       <img :data-src="cover | resize('0x0')" />
     </div>
-    <div class="landing">
-      <ul class="logo">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
+    <div class="logo">
+      <img src="@/assets/images/logo.svg" />
     </div>
   </router-link>
 </template>
