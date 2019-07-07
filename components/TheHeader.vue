@@ -24,11 +24,12 @@
             <span class="text">All Projects</span>
           </router-link>
         </li>
-        <li v-for="category in categories" v-bind:class="{active: selectedCategory == category.id}">
-          <router-link tag="a" :to="'/category/' + category.id">
-            <span>&nbsp;/&nbsp;</span>
-            <span class="text">{{ category.name }}</span>
-          </router-link>
+        <li
+          v-for="category in categories"
+          v-bind:class="{active: selectedCategory == category.id}"
+          :key="category"
+        >
+          <router-link tag="a" :to="'/category/' + category.id">{{ category.name }}</router-link>
         </li>
         <div class="desktop">
           <br />
