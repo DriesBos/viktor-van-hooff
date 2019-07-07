@@ -27,21 +27,12 @@ export default {
 </script>
 
 <style lang="sass">
-@import '~/assets/styling/variables.sass'
-
 .markdown
-  // p
-  //   margin-bottom: $lineheight-base
-  //   display: block
-  // p:last-child
-  //   margin-bottom: 0
   img
-    opacity: 1
+    opacity: 1 !important
     padding-bottom: 0
     cursor: default
   img:hover
     opacity: 1 !important
     cursor: default !important
-
-
 </style>

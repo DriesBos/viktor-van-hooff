@@ -186,6 +186,18 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.view-Post
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  min-height: 100vh
+  .post-List
+    li img
+      cursor: pointer
+      transition: opacity .2s ease
+    li img:hover
+      opacity: .55
+
 .post-Footer
 	display: flex
   align-items: center

@@ -28,4 +28,30 @@ export default {
 <style lang="sass" scoped>
 @import '~/assets/styling/variables.sass'
 
+.view-Home
+  padding: $spacing-3
+  width: 100vw
+  height: 100vh
+  cursor: pointer
+  display: block
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: 50% 50%
+  .imageContainer
+    width: 100%
+    height: 100%
+  .logo
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+    height: 100%
+    // max-width: calc((6vmin * 3) + (.5vmin * 2))
+    // max-height: calc((6vmin * 3) + (.5vmin * 2))
+    padding: $spacing-3
+    max-width: 50vmin
+    max-height: 50vmin
 </style>

@@ -44,47 +44,6 @@ img[lazy="loaded"]
   @media all and (max-width: $breakpoint)
     flex-direction: column
 
-// Header Styling
-.headerItem
-  position: sticky
-  align-self: flex-start
-  top: 0
-  display: flex
-  justify-content: flex-start
-  flex-wrap: nowrap
-  padding: $spacing-4
-  @media all and (max-width: $breakpoint)
-    padding: $spacing-3
-  .logo
-    position: relative
-    width: calc((24px * 3) + (2px * 2))
-    height: calc((24px * 3) + (2px * 2))
-  .menu
-    max-width: 500px
-    margin-left: $spacing-4
-    @media all and (max-width: $breakpoint)
-      margin-left: $spacing-3
-    li
-      display: inline-block
-      text-transform: capitalize
-      margin-right: 1em
-      a
-        text-decoration: none
-      a:hover
-        text-decoration: underline
-    li.active a
-      text-decoration: underline
-    a
-      line-height: 1.5
-  .menu-arrow
-    padding-right: $spacing-3
-    padding-bottom: $spacing-3
-    cursor: pointer
-    &:hover > span
-      text-decoration: underline
-    img
-      transform: translateY(-3px)
-
 // Views
 .view-General
   width: calc(380px + (2 * #{$spacing-3})
@@ -93,66 +52,18 @@ img[lazy="loaded"]
   @media all and (max-width: $breakpoint)
     width: 100%
 
-.view-Home
-  padding: $spacing-3
-  width: 100vw
-  height: 100vh
-  cursor: pointer
-  display: block
-  img
-    width: 100%
-    height: 100%
-    object-fit: cover
-    object-position: 50% 50%
-  .imageContainer
-    width: 100%
-    height: 100%
-  .logo
-    position: fixed
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    width: 100%
-    height: 100%
-    // max-width: calc((6vmin * 3) + (.5vmin * 2))
-    // max-height: calc((6vmin * 3) + (.5vmin * 2))
-    padding: $spacing-3
-    max-width: 50vmin
-    max-height: 50vmin
-
-.view-Blog // Index page
-  .post-List
-    li
-      cursor: pointer
-    li:hover
-      img
-        opacity: .55
-
-.view-Post // Project page
-  display: flex
-  flex-direction: column
-  justify-content: space-between
-  min-height: 100vh
-  .post-List
-    li img
-      cursor: pointer
-      transition: opacity .2s ease
-    li img:hover
-      opacity: .55
-
-// Post Styling
+// Post Styling (used in index + post pages)
 .post-List
   li
     margin-bottom: 25
     display: inline-block // Assures the FLIP animation script (fade-in-ou for li elements)
-
-.post-Item
-  margin-bottom: $spacing-3
-  img, h1, p
-    padding-bottom: $spacing-3
-  img
-    width: 100%
-    height: auto
-  .post-Info
-    display: flex
-    justify-content: flex-start
+  .post-Item
+    margin-bottom: $spacing-3
+    img, h1, p
+      padding-bottom: $spacing-3
+    img
+      width: 100%
+      height: auto
+    .post-Info
+      display: flex
+      justify-content: flex-start

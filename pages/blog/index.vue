@@ -1,7 +1,6 @@
 <template>
   <div class="view-General view-Blog">
     <transition-group class="post-List" tag="ul">
-    
       <PostPreview
         v-for="post in projects"
         :id="post.id"
@@ -24,7 +23,18 @@ export default {
     PostPreview: PostPreview
   },
   computed: mapState({
-  	projects: state => state.projects.list
+    projects: state => state.projects.list
   })
 }
 </script>
+
+<style lang="sass" scoped>
+.view-Blog
+  .post-List
+    li
+      cursor: pointer
+    li:hover
+      img
+        opacity: .55
+</style>
+
