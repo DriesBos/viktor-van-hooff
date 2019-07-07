@@ -71,11 +71,11 @@ export default {
   padding: $spacing-4
   @media all and (max-width: $breakpoint)
     padding: $spacing-3
+    padding-right: 0
     width: 100%
     background: rgba(255,255,255,0.5)
     -webkit-backdrop-filter: saturate(180%) blur(2px)
     backdrop-filter: saturate(180%) blur(2px)
-
   .logo
     position: relative
     width: calc((24px * 3) + (2px * 2))
@@ -93,6 +93,9 @@ export default {
         text-decoration: none
       a:hover
         text-decoration: underline
+      @media (hover: none)
+        a:hover
+          text-decoration: none
     li.active a
       text-decoration: underline
     a
@@ -105,4 +108,7 @@ export default {
       text-decoration: underline
     img
       transform: translateY(-3px)
+  @media (hover: none)
+    .menu-arrow:hover > span
+      text-decoration: none
 </style>

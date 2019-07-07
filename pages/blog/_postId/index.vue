@@ -197,6 +197,9 @@ export default {
       transition: opacity .2s ease
     li img:hover
       opacity: .55
+    @media (hover: none)
+      li img:hover
+        opacity: 1
 
 .post-Footer
 	display: flex

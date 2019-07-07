@@ -36,5 +36,9 @@ export default {
     li:hover
       img
         opacity: .55
+    @media (hover: none)
+      li:hover
+        img
+          opacity: 1
 </style>
 
