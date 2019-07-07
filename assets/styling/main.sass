@@ -96,16 +96,62 @@ img[lazy="loaded"]
   @media all and (max-width: $breakpoint)
     width: 100%
 
-.view-Blog
+.view-Home
+  padding: $spacing-3
+  width: 100vw
+  height: 100vh
+  cursor: pointer
+  display: block
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: 50% 50%
+  .imageContainer
+    width: 100%
+    height: 100%
+  .landing
+    position: fixed
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    display: inline-flex
+    padding: $spacing-3
+    .logo
+      width: calc((6vmin * 3) + (.5vmin * 2))
+      transition: opacity .2s ease
+      cursor: pointer
+      &:hover
+        opacity: .75
+      li
+        width: 6vmin
+        height: 6vmin
+        margin-right: .5vmin
+        margin-bottom: .5vmin
+      li:nth-child(3n)
+        margin-right: 0
+      @media all and (max-width: $breakpoint)
+        width: calc((48px * 3) + (4px * 2))
+        li
+          width: 48px
+          height: 48px
+          background: black
+          margin-right: 4px
+          margin-bottom: 4px
+        li:nth-child(2), li:nth-child(8)
+          background: transparent
+        li:nth-child(3n)
+          margin-right: 0
+
+.view-Blog // Index page
   .post-List
+    li
+      cursor: pointer
     li:hover
       img
         opacity: .55
-    .markdown
-      max-height: calc(4 * #{$lineheight-base})
-      overflow: hidden
 
-.view-Post
+.view-Post // Project page
   display: flex
   flex-direction: column
   justify-content: space-between
@@ -117,56 +163,19 @@ img[lazy="loaded"]
     li img:hover
       opacity: .55
 
+// Post Styling
 .post-List
   li
-    margin-bottom: 50px
+    margin-bottom: 25
     display: inline-block // Assures the FLIP animation script (fade-in-ou for li elements)
-  li:last-child
-    margin-bottom: $spacing-3
 
 .post-Item
-  > div
-    margin-bottom: $spacing-3
-  > div:last-child
-    margin-bottom: 0
+  margin-bottom: $spacing-3
+  img, h1, p
+    padding-bottom: $spacing-3
   img
     width: 100%
     height: auto
-    padding-bottom: $spacing-3
-    border: 1px solid red
-  img:last-child
-    margin-bottom: 0
   .post-Info
     display: flex
     justify-content: flex-start
-  .post-Images
-    img:last-child
-      margin-bottom: 0
-  .post-Footer
-    display: flex
-    justify-content: space-between
-    width: 100%
-    max-width: 400px
-    @media all and (max-width: $breakpoint)
-      width: 100%
-      max-width: 100%
-    img
-      width: 24px
-      height: 13px
-      display: inline
-    &_Next
-      margin-left: auto
-    &_Prev, &_Next
-      p
-        margin-left: 6px
-        margin-right: 6px
-      cursor: pointer
-      &:hover p
-        text-decoration: underline
-    &_Next img
-      transform: rotate(180deg)
-
-// TIJDELIJK
-#show-modal
-  padding-top: 200px
-  z-index: 100

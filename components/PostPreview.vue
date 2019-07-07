@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li class="post-Item">
     <nuxt-link :to="'/blog/' + id" tag="a" class="post-Item">
       <div v-if="thumbnail" class="post-Thumbnail" v-lazy-container="{ selector: 'img' }">
         <img :data-src="thumbnail | resize('760x0')" width="760" height="auto" />
