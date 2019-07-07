@@ -16,24 +16,28 @@
 
 // Header Styling
 .headerItem
+  position: sticky
+  align-self: flex-start
+  top: 0
   display: flex
   justify-content: flex-start
   flex-wrap: nowrap
   padding-bottom: $spacing-3
+  @media all and (min-width: $breakpoint)
+    padding-top: $spacing-3
   .menu
     @media all and (min-width: $breakpoint)
       padding-left: $spacing-3
       padding-right: $spacing-3
+      max-width: 500px
     li
-      display: block
+      display: inline-block
       text-transform: capitalize
       margin-right: 1em
       a
         text-decoration: none
       a:hover
         text-decoration: underline
-      @media all and (max-width: $breakpoint)
-        display: inline-block
     li.active a
       text-decoration: underline
     a
