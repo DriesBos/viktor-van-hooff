@@ -105,22 +105,10 @@
       class="post-Footer"
       v-bind:class="{ 'post-Footer--spaced': previous_url && next_url, 'post-Footer--end': next_url && ! previous_url }"
     >
-      <router-link
-        v-if="previous_url"
-        class="post-Footer_Control post-Footer_Prev icon"
-        tag="a"
-        :to="previous_url"
-      >
+      <router-link v-if="previous_url" class="post-Footer_Prev icon" tag="a" :to="previous_url">
         <img src="@/assets/images/arrow-left.svg" />
-        <span>Previous</span>
       </router-link>
-      <router-link
-        v-if="next_url"
-        class="post-Footer_Control post-Footer_Next icon"
-        tag="a"
-        :to="next_url"
-      >
-        <span>Next</span>
+      <router-link v-if="next_url" class="post-Footer_Next icon" tag="a" :to="next_url">
         <img src="@/assets/images/arrow-right.svg" />
       </router-link>
     </div>
@@ -198,41 +186,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '~/assets/styling/variables.sass'
-
 .post-Footer
 	display: flex
-	margin-bottom: $spacing-3
-.post-Footer--spaced
-	justify-content: space-between
-.post-Footer--end
-	justify-content: flex-end
-.post-Thumbnail, .post-Images
-	display: block
-	margin-bottom: 25px
-.post-Footer_Control
-	display: flex
-	align-items: center
-.post-Footer_Next
-	img
-		margin-left: 10px
-.post-Footer_Prev
-	img
-		margin-right: 10px
-.view-Project
-  margin-top: 100px
-  display: flex
-  flex-direction: column
-  justify-content: center
   align-items: center
-// .project-List
-//   display: flex
-//   flex-direction: column
-//   width: 500px
-//   li
-//     background: lightblue
-//     margin-bottom: 100px
-//   img
-//     width: 100%
-//     height: auto
+.post-Footer  a
+  flex-grow: 1
+.post-Footer_Next
+  text-align: right
 </style>
