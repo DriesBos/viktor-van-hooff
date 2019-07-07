@@ -2,6 +2,20 @@
 @import '~/assets/styling/typography.sass'
 @import '~/assets/styling/transitions.sass'
 
+// General
+img
+  transition: opacity .2s ease-in-out
+  opacity: 0
+
+img[lazy="loaded"]
+  opacity: 1
+
+.icon
+  img
+    opacity: 1
+    width: 30px
+    height: 30px
+
 .desktop // Only visible at desktop breakpoint
   @media all and (max-width: $breakpoint)
     display: none
@@ -74,6 +88,7 @@
   li:nth-child(3n)
     margin-right: 0
 
+// Views
 .view-General
   width: calc(380px + (2 * #{$spacing-3})
   flex-shrink: 0
@@ -81,18 +96,26 @@
   @media all and (max-width: $breakpoint)
     width: 100%
 
-img
-  transition: opacity .2s ease-in-out
-  opacity: 0
+.view-Blog
+  .post-List
+    li:hover
+      img
+        opacity: .55
+    .markdown
+      max-height: calc(4 * #{$lineheight-base})
+      overflow: hidden
 
-img[lazy="loaded"]
-  opacity: 1
-
-.icon
-  img
-    opacity: 1
-    width: 30px
-    height: 30px
+.view-Post
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  min-height: 100vh
+  .post-List
+    li img
+      cursor: pointer
+      transition: opacity .2s ease
+    li img:hover
+      opacity: .55
 
 .post-List
   li
@@ -141,23 +164,6 @@ img[lazy="loaded"]
         text-decoration: underline
     &_Next img
       transform: rotate(180deg)
-
-.view-Blog
-  .post-List
-    li:hover
-      img
-        opacity: .55
-    .markdown
-      max-height: calc(4 * #{$lineheight-base})
-      overflow: hidden
-
-.view-Post
-  .post-List
-    li img
-      cursor: pointer
-      transition: opacity .2s ease
-    li img:hover
-      opacity: .55
 
 // TIJDELIJK
 #show-modal
