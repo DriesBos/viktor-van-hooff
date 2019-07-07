@@ -14,10 +14,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass">
-@import '~/assets/styling/main.sass'
-
-#__layout
-  padding: $spacing-3
-</style>

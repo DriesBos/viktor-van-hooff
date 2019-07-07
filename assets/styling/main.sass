@@ -22,14 +22,11 @@
   display: flex
   justify-content: flex-start
   flex-wrap: nowrap
-  padding-bottom: $spacing-3
-  @media all and (min-width: $breakpoint)
-    padding-top: $spacing-3
+  padding: $spacing-3
   .menu
+    max-width: 500px
     @media all and (min-width: $breakpoint)
       padding-left: $spacing-3
-      padding-right: $spacing-3
-      max-width: 500px
     li
       display: inline-block
       text-transform: capitalize
@@ -77,8 +74,9 @@
     margin-right: 0
 
 .view-General
-  width: 380px
+  width: calc(380px + (2 * #{$spacing-3})
   flex-shrink: 0
+  padding: $spacing-3
   @media all and (max-width: $breakpoint)
     width: 100%
 
