@@ -22,11 +22,14 @@
   display: flex
   justify-content: flex-start
   flex-wrap: nowrap
-  padding: $spacing-3
+  padding: $spacing-4
+  @media all and (max-width: $breakpoint)
+    padding: $spacing-3
   .menu
     max-width: 500px
-    @media all and (min-width: $breakpoint)
-      padding-left: $spacing-3
+    margin-left: $spacing-4
+    @media all and (max-width: $breakpoint)
+      margin-left: $spacing-3
     li
       display: inline-block
       text-transform: capitalize
@@ -52,8 +55,6 @@
   display: inline-flex
   flex-wrap: wrap
   width: calc((24px * 3) + (2px * 2))
-  margin-left: $spacing-3
-  margin-right: $spacing-3
   align-content: flex-start
   transition: opacity .2s ease
   cursor: pointer
