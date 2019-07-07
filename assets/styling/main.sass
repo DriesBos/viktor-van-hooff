@@ -6,11 +6,77 @@
   @media all and (max-width: $breakpoint)
     display: none
 
-.view-General
-  max-width: 380px
-  float: right
+// App Styling
+.app-Container
+  display: flex
+  flex-wrap: nowrap
+  justify-content: space-between
   @media all and (max-width: $breakpoint)
-    max-width: 100%
+    flex-direction: column
+
+// Header Styling
+.headerItem
+  border: 1px solid green
+  display: flex
+  justify-content: flex-start
+  flex-wrap: nowrap
+  padding-bottom: $spacing-3
+  .menu
+    position: relative
+    display: inline-block
+    margin-left: $spacing-3
+    margin-right: $spacing-3
+    max-width: 330px
+    li
+      display: inline-block
+      a
+      	text-decoration: none
+      a:hover .text
+      	text-decoration: underline
+    li.active a .text
+      text-decoration: underline
+    p
+      line-height: 1.5
+  .menu-arrow
+    padding-right: $spacing-3
+    padding-bottom: $spacing-3
+    cursor: pointer
+    &:hover > span
+      text-decoration: underline
+    img
+      transform: translateY(-3px)
+
+.logo
+  display: inline-flex
+  flex-wrap: wrap
+  width: calc((24px * 3) + (2px * 2))
+  margin-left: $spacing-3
+  margin-right: $spacing-3
+  align-content: flex-start
+  transition: opacity .2s ease
+  cursor: pointer
+  flex-shrink: 0
+  @media all and (max-width: $breakpoint)
+    margin-left: 0
+  &:hover
+    opacity: .75
+  li
+    width: 24px
+    height: 24px
+    background: black
+    margin-right: 2px
+    margin-bottom: 2px
+  li:nth-child(2), li:nth-child(8)
+    background: transparent
+  li:nth-child(3n)
+    margin-right: 0
+
+.view-General
+  border: 1px solid blue
+  width: 380px
+  flex-shrink: 0
+  @media all and (max-width: $breakpoint)
+    width: 100%
 
 img
   transition: opacity .2s ease-in-out
