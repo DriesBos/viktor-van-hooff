@@ -29,9 +29,14 @@ export default {
 @import '~/assets/styling/variables.sass'
 
 .view-Home
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
   padding: $spacing-3
-  width: 100vw
-  height: 100vh
+  // width: 100vw
+  // height: 100vh
   cursor: pointer
   display: block
   img
