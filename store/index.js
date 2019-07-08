@@ -36,8 +36,6 @@ export default {
 		
 		commit('categories/update', tags)
 		
-		dispatch('core/load')
-		
 	  }
 	}
 }
