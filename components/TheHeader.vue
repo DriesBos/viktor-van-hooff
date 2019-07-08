@@ -17,7 +17,6 @@
         <li
           v-for="category in categories"
           v-bind:class="{active: selectedCategory == category.id}"
-          :key="category"
         >
           <router-link tag="a" :to="'/category/' + category.id">{{ category.name }}</router-link>
         </li>
