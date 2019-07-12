@@ -10,7 +10,9 @@
         <a @click="close" class="image-Slider_Close icon">
           <img src="@/assets/images/close.svg" />
         </a>
-        <img :data-src="currentImage | resize('1680x0')" class="image" />
+        <a @click="next">
+          <img :data-src="currentImage | resize('1680x0')" class="image" />
+        </a>
         <a v-if="imageCount > 1" @click="previous" class="image-Slider_Nav image-Slider_Prev icon">
           <img src="@/assets/images/arrow-left.svg" />
         </a>
@@ -68,7 +70,7 @@ export default {
       return this.getCurrentImage()
     },
     imageCount: function() {
-	    return this.images.filter(image => image).length
+      return this.images.filter(image => image).length
     }
   }
 }
