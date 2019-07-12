@@ -88,7 +88,6 @@ export default {
   align-items: center
   display: flex
   position: absolute
-  padding: $spacing-3
   top: 0
   left: 0
   height: 100%
@@ -110,6 +109,11 @@ export default {
   transform: translateY(-50%)
   cursor: pointer
   padding: $spacing-3
+.image-Slider_Nav, .image-Slider_Close
+  img
+    background: rgba(255,255,255,0.5)
+    -webkit-backdrop-filter: saturate(180%) blur(2px)
+    backdrop-filter: saturate(180%) blur(2px)
 .image-Slider_Prev
   left: 0
 .image-Slider_Next
