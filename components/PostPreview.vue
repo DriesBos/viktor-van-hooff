@@ -5,7 +5,7 @@
         <img :data-src="thumbnail | resize('760x0')" width="760" height="auto" />
       </div>
       <div class="post-Info">
-        <div v-if="title">
+        <div v-if="title" class>
           <h1>{{ title }}</h1>
         </div>
         <div v-if="location">

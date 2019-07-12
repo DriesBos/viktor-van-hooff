@@ -70,3 +70,23 @@ img[lazy="loaded"]
     .post-Info
       display: flex
       justify-content: flex-start
+      width: 100%
+      max-width: 380px
+      @media all and (max-width: $breakpoint)
+        max-width: calc(100vw - (2 * #{$spacing-3}))
+      > div
+        max-width: 100%
+        min-width: 0
+        h1, p
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+
+.ellipsis
+  overflow: hidden
+  min-width: 0
+  text-overflow: ellipsis
+  h1, span, p
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
