@@ -55,3 +55,16 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+.view-About
+  .post-List
+    li img
+      cursor: pointer
+      transition: opacity .2s ease
+    li img:hover
+      opacity: .55
+    @media (hover: none)
+      li img:hover
+        opacity: 1
+</style>
