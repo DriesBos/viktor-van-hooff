@@ -88,6 +88,7 @@ export default {
   align-items: center
   display: flex
   position: absolute
+  padding: $spacing-3
   top: 0
   left: 0
   height: 100%
