@@ -10,9 +10,7 @@
         <a @click="close" class="image-Slider_Close icon">
           <img src="@/assets/images/close.svg" />
         </a>
-        <a @click="next">
-          <img :data-src="currentImage | resize('1680x0')" class="image" />
-        </a>
+        <img :data-src="currentImage | resize('1680x0')" @click="next" class="image" />
         <a v-if="imageCount > 1" @click="previous" class="image-Slider_Nav image-Slider_Prev icon">
           <img src="@/assets/images/arrow-left.svg" />
         </a>
@@ -84,9 +82,9 @@ export default {
   z-index: 995
   height: 100%
 .image-Slider
+  display: flex
   justify-content: center
   align-items: center
-  display: flex
   position: absolute
   top: 0
   left: 0
@@ -97,6 +95,9 @@ export default {
     height: 100%
     object-fit: contain
     object-position: center center
+    img
+      max-width: 100%
+      max-height: 100%
 .image-Slider_Close
   position: absolute
   top: 0
