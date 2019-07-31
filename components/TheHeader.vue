@@ -14,10 +14,7 @@
             <span class="text">All Projects</span>
           </router-link>
         </li>
-        <li
-          v-for="category in categories"
-          v-bind:class="{active: selectedCategory == category.id}"
-        >
+        <li v-for="category in categories" v-bind:class="{active: selectedCategory == category.id}">
           <router-link tag="a" :to="'/category/' + category.id">{{ category.name }}</router-link>
         </li>
         <div class="desktop">
@@ -80,7 +77,7 @@ export default {
     width: calc((24px * 3) + (2px * 2))
     height: calc((24px * 3) + (2px * 2))
   .menu
-    max-width: 500px
+    max-width: 330px
     margin-left: $spacing-4
     @media all and (max-width: $breakpoint)
       margin-left: $spacing-3
