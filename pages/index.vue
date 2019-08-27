@@ -1,8 +1,8 @@
 <template>
   <router-link class="view-Home" tag="a" to="/blog">
-    <div class="imageContainer" v-lazy-container="{ selector: 'img' }">
-      <img :data-src="cover | resize('0x0')" />
-    </div>
+    <sliderItemNoControls
+      :images="[image_00, image_01, image_02, image_03, image_04, image_05, image_06, image_07, image_08, image_09]"
+    ></sliderItemNoControls>
     <div class="logo">
       <img src="@/assets/images/logo.svg" />
     </div>
@@ -10,7 +10,12 @@
 </template>
 
 <script>
+import SliderItemNoControls from '~/components/SliderItemNoControls.vue'
+
 export default {
+  components: {
+    SliderItemNoControls
+  },
   asyncData(context) {
     return context.app.$storyapi
       .get('cdn/stories/landing', {
@@ -18,14 +23,23 @@ export default {
       })
       .then(res => {
         return {
-          cover: res.data.story.content.cover
+          image_00: res.data.story.content.image_00,
+          image_01: res.data.story.content.image_01,
+          image_02: res.data.story.content.image_02,
+          image_03: res.data.story.content.image_03,
+          image_04: res.data.story.content.image_04,
+          image_05: res.data.story.content.image_05,
+          image_06: res.data.story.content.image_06,
+          image_07: res.data.story.content.image_07,
+          image_08: res.data.story.content.image_08,
+          image_09: res.data.story.content.image_09
         }
       })
   }
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import '~/assets/styling/variables.sass'
 
 .view-Home
