@@ -1,3 +1,8 @@
+import {
+  publicKey,
+  previewKey,
+  token
+} from './config';
 const axios = require('axios')
 const pkg = require('./package')
 
@@ -9,8 +14,7 @@ module.exports = {
    */
   head: {
     title: 'Viktor van Hooff — Architect',
-    meta: [
-      {
+    meta: [{
         charset: 'utf-8'
       },
       {
@@ -31,8 +35,7 @@ module.exports = {
         content: '#000000'
       }
     ],
-    link: [
-      {
+    link: [{
         rel: 'icon',
         type: 'image/image/png',
         sizes: '16x16',
@@ -73,7 +76,7 @@ module.exports = {
    ** Router behaviour
    */
   router: {
-    scrollBehavior: function(to, from, savedPosition) {
+    scrollBehavior: function (to, from, savedPosition) {
       return {
         x: 0,
         y: 0
@@ -104,10 +107,9 @@ module.exports = {
     [
       'storyblok-nuxt',
       {
-        accessToken:
-          process.env.NODE_ENV === 'production' // Generate new token
-            ? 'wu4ewcwlPLRtdoB5irDemwtt' // Public
-            : 'CGvg5T8va1BLd26eGNRFKAtt', // Preview
+        accessToken: process.env.NODE_ENV === 'production' // Generate new token
+          ?
+          `${publicKey}` : `${previewKey}`,
         cacheProvider: 'memory'
       }
     ]
@@ -116,11 +118,11 @@ module.exports = {
    ** Generating routes
    */
   generate: {
-    routes: function() {
+    routes: function () {
       return axios
         .get(
-          'https://api.storyblok.com/v1/cdn/stories?version=published&token=CGvg5T8va1BLd26eGNRFKAtt&starts_with=blog&cv=' +
-            Math.floor(Date.now() / 1e3)
+          `https://api.storyblok.com/v1/cdn/stories?version=published&token=${token}&starts_with=blog&cv=` +
+          Math.floor(Date.now() / 1e3)
         )
         .then(res => {
           const blogPosts = res.data.stories.map(bp => bp.full_slug)
