@@ -1,13 +1,6 @@
 const axios = require('axios')
 const pkg = require('./package')
-const publicKey = process.env.PUBLICKEY
-const previewKey = process.env.PREVIEWKEY
-const apiToken = process.env.APITOKEN
-// import {
-//   publicKey,
-//   previewKey,
-//   apiToken
-// } from './config';
+require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
@@ -118,8 +111,8 @@ module.exports = {
       {
         accessToken:
           process.env.NODE_ENV === 'production' // Generate new token
-            ? `${publicKey}`
-            : `${previewKey}`,
+            ? process.env.PUBLICKEY
+            : process.env.PREVIEWKEY,
         cacheProvider: 'memory'
       }
     ]
@@ -131,8 +124,9 @@ module.exports = {
     routes: function() {
       return axios
         .get(
-          `https://api.storyblok.com/v1/cdn/stories?version=published&token=${apiToken}&starts_with=blog&cv=` +
-            Math.floor(Date.now() / 1e3)
+          `https://api.storyblok.com/v1/cdn/stories?version=published&token=${
+            process.env.APITOKEN
+          }&starts_with=blog&cv=` + Math.floor(Date.now() / 1e3)
         )
         .then(res => {
           const blogPosts = res.data.stories.map(bp => bp.full_slug)
