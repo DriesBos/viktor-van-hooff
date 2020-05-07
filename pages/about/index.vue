@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 .view-About
   .post-List
     li img

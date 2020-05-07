@@ -185,7 +185,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 .view-Post
   display: flex
   flex-direction: column
@@ -202,7 +202,7 @@ export default {
         opacity: 1
 
 .post-Footer
-	display: flex
+  display: flex
   align-items: center
 .post-Footer  a
   flex-grow: 1
