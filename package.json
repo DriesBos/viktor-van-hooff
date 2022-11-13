@@ -14,11 +14,11 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@nuxt/webpack": "^2.12.2",
+    "@nuxt/webpack": "^2.15.8",
     "@nuxtjs/axios": "^5.10.3",
     "cross-env": "^5.2.0",
     "marked": "^0.7.0",
-    "nuxt": "^2.12.2",
+    "nuxt": "^2.15.8",
     "redirect-ssl": "^1.4.1",
     "dotenv": "^8.2.0",
     "sass-loader": "^7.1.0",
