@@ -1,5 +1,5 @@
 [build]
-  command = "NODE_ENV=production npm run generate"
+  command = "NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider npm run generate"
   publish = "dist"
 
 [build.environment]
