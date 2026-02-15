@@ -111,8 +111,13 @@ module.exports = {
       {
         accessToken:
           process.env.NODE_ENV === 'production' // Generate new token
-            ? process.env.PUBLICKEY
-            : process.env.PREVIEWKEY,
+            ? process.env.STORYBLOK_ACCESS_TOKEN ||
+              process.env.PUBLICKEY ||
+              process.env.APITOKEN
+            : process.env.STORYBLOK_PREVIEW_TOKEN ||
+              process.env.PREVIEWKEY ||
+              process.env.PUBLICKEY ||
+              process.env.APITOKEN,
         cacheProvider: 'memory'
       }
     ]
@@ -122,15 +127,26 @@ module.exports = {
    */
   generate: {
     routes: function() {
+      const generateToken =
+        process.env.STORYBLOK_GENERATE_TOKEN ||
+        process.env.PUBLICKEY ||
+        process.env.APITOKEN
+
+      if (!generateToken) {
+        throw new Error(
+          'Missing Storyblok token. Set PUBLICKEY (recommended) or APITOKEN for static route generation.'
+        )
+      }
+
       return Promise.all([
         axios.get(
           `https://api.storyblok.com/v1/cdn/stories?version=published&token=${
-            process.env.APITOKEN
+            generateToken
           }&starts_with=blog&cv=` + Math.floor(Date.now() / 1e3)
         ),
         axios.get(
           `https://api.storyblok.com/v1/cdn/tags?version=published&token=${
-            process.env.APITOKEN
+            generateToken
           }&cv=` + Math.floor(Date.now() / 1e3)
         )
       ]).then(([storiesRes, tagsRes]) => {

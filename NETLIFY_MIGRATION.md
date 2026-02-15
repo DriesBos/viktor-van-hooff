@@ -33,9 +33,12 @@
 
 Set in Netlify Site settings -> Environment variables:
 
-- `APITOKEN`: Storyblok API token used at build time for route generation.
-- `PUBLICKEY`: Storyblok public token used in production/static app.
-- `PREVIEWKEY`: optional for non-production preview builds.
+- `PUBLICKEY`: Storyblok public/preview token used by production static build (required).
+- `APITOKEN`: legacy fallback token for route generation/runtime (optional if `PUBLICKEY` is set).
+- `PREVIEWKEY`: optional token for non-production preview builds.
+- `STORYBLOK_ACCESS_TOKEN`: optional explicit override for production runtime token.
+- `STORYBLOK_PREVIEW_TOKEN`: optional explicit override for non-production runtime token.
+- `STORYBLOK_GENERATE_TOKEN`: optional explicit override for route generation token.
 
 Not needed on Netlify:
 
@@ -45,7 +48,7 @@ Not needed on Netlify:
 ## 5) Cutover Checklist (Low Downtime)
 
 1. Create Netlify site from this repo.
-2. Configure env vars (`APITOKEN`, `PUBLICKEY`, optional `PREVIEWKEY`).
+2. Configure env vars (`PUBLICKEY` required; `APITOKEN`/`PREVIEWKEY` optional).
 3. Deploy preview and validate:
    - `/`
    - `/blog`
